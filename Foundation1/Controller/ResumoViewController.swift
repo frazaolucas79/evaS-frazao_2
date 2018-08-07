@@ -11,6 +11,8 @@ import MessageUI
 
 class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate {
     
+    var didFinishAction = false
+    
     var mailContent:String {
         return """
         <h4>Olá, Somos do aplicativo evaS e estamos repassando informação sobre algum desperdicio de água (\(dao.denuncia.tipoDenuncia)).</h4>
@@ -49,6 +51,8 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     
     @IBAction func reportMail(_ sender: Any) {
         sendEmail()
+        didFinishAction = true
+        
     }
     
     @IBOutlet weak var descReview: UITextView!
@@ -66,8 +70,31 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         
         
         
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    func goToHomePage() {
+        
+        let tipoDenunciaView: FirstNavController = self.storyboard?.instantiateViewController(withIdentifier: "FirstNavController2") as! FirstNavController
+        
+        self.navigationController?.present(tipoDenunciaView, animated: true, completion: nil)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if didFinishAction == true {
+            
+            goToHomePage()
+            
+        }
+        
+        
+    }
+    
     
     
     @IBAction func shareButton(_ sender: Any) {
