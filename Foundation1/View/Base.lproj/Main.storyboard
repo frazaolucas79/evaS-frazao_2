@@ -325,7 +325,7 @@
                                                     <constraint firstAttribute="width" constant="191" id="DRd-FV-GGK"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                                <color key="textColor" name="redish"/>
+                                                <color key="textColor" name="water"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua localização" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kwD-rM-AhL">
@@ -386,6 +386,13 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s2z-KH-KWc">
+                                                <rect key="frame" x="30" y="625" width="80" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="eJO-aN-4t4"/>
+                                                    <constraint firstAttribute="height" constant="80" id="hN8-sj-a6o"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -400,9 +407,11 @@
                                             <constraint firstItem="dPo-so-ozx" firstAttribute="trailing" secondItem="hdY-Al-Zfa" secondAttribute="trailing" id="G8P-AL-EiS"/>
                                             <constraint firstItem="Vvh-QH-LZf" firstAttribute="leading" secondItem="FC1-yL-FuD" secondAttribute="leading" constant="30" id="IYh-e7-Ign"/>
                                             <constraint firstItem="aoO-KT-IYZ" firstAttribute="top" secondItem="FC1-yL-FuD" secondAttribute="top" constant="29" id="LLz-Ga-668"/>
+                                            <constraint firstItem="s2z-KH-KWc" firstAttribute="leading" secondItem="hdY-Al-Zfa" secondAttribute="leading" id="MIh-mW-bwY"/>
                                             <constraint firstItem="30w-jk-rN8" firstAttribute="leading" secondItem="kwD-rM-AhL" secondAttribute="leading" id="OJj-IY-pUH"/>
                                             <constraint firstItem="Qa6-8U-ujL" firstAttribute="centerX" secondItem="xOl-7A-bgp" secondAttribute="centerX" id="OMV-4r-C0g"/>
                                             <constraint firstItem="xOl-7A-bgp" firstAttribute="centerX" secondItem="3wG-AB-blh" secondAttribute="centerX" id="T5y-Oy-BjH"/>
+                                            <constraint firstItem="s2z-KH-KWc" firstAttribute="top" secondItem="hdY-Al-Zfa" secondAttribute="bottom" constant="14.666666666666742" id="UrA-3w-qud"/>
                                             <constraint firstItem="Vvh-QH-LZf" firstAttribute="top" secondItem="hdY-Al-Zfa" secondAttribute="bottom" constant="16" id="V1N-XK-3xN"/>
                                             <constraint firstItem="aoO-KT-IYZ" firstAttribute="leading" secondItem="uj6-1R-Hya" secondAttribute="trailing" constant="17" id="XPU-nH-gIu"/>
                                             <constraint firstItem="Qa6-8U-ujL" firstAttribute="centerY" secondItem="xOl-7A-bgp" secondAttribute="centerY" id="ZLo-bu-8cR"/>
@@ -453,6 +462,7 @@
                         <outlet property="cameraOutlet" destination="dPo-so-ozx" id="uy0-4N-zWd"/>
                         <outlet property="denunciaView" destination="uj6-1R-Hya" id="mbs-pL-Uui"/>
                         <outlet property="imageIcon" destination="Kai-MM-xOG" id="AeW-8V-PP4"/>
+                        <outlet property="imageUpload" destination="s2z-KH-KWc" id="P6u-vk-njz"/>
                         <outlet property="labelAddress" destination="30w-jk-rN8" id="hdv-zP-c01"/>
                         <outlet property="mapView" destination="xOl-7A-bgp" id="PjY-fM-Vre"/>
                         <outlet property="obsView" destination="hdY-Al-Zfa" id="e2K-ba-Zye"/>
@@ -460,6 +470,7 @@
                         <outlet property="searchIconMap" destination="g5G-vO-m8Y" id="L8V-Su-jev"/>
                         <outlet property="searchMap" destination="zs8-Oa-QL6" id="sf0-NP-Ilw"/>
                         <outlet property="titleDenun" destination="aoO-KT-IYZ" id="t6g-0o-May"/>
+                        <outlet property="topConstNext" destination="V1N-XK-3xN" id="IjC-8N-iRw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vi7-6N-RhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1182,9 +1193,6 @@
         </namedColor>
         <namedColor name="purple">
             <color red="0.36500000953674316" green="0.3059999942779541" blue="0.42699998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="redish">
-            <color red="1" green="0.41999998688697815" blue="0.41999998688697815" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="water">
             <color red="0.30588235294117649" green="0.80392156862745101" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
