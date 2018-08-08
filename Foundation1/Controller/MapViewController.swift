@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextViewDelegate  {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate  {
     
     //Varibles
     
@@ -22,6 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var titleDenun: UILabel!
     @IBOutlet weak var labelAddress: UILabel!
     @IBOutlet weak var obsView: UITextView!
+    @IBOutlet weak var cameraOutlet: UIButton!
     
     var mainLabel = ""
     var colorDenun = ""
@@ -32,6 +33,34 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func updateLocation(_ sender: Any) {
         getLocation()
     }
+    
+    @IBAction func camera(_ sender: Any) {
+    
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.allowsEditing = true
+        vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(vc, animated: true)
+    
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        dao.denuncia.fotoData = image.data
+        cameraOutlet.setImage(image, for: UIControlState.normal)
+        // print out the image size as a test
+        print(image.size)
+    }
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +73,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         obsView.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
         obsView.layer.cornerRadius = 10
         //Keyboard Functions
+      
+        /*
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
-        
+        */
         /*
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
@@ -154,25 +185,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     // Keyboard Functions
-    
-    @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y -= 235
-        searchMap.isUserInteractionEnabled = false
-        searchIconMap.isUserInteractionEnabled = false
-    }
-    
-    @objc func keyboardWillHide(sender: NSNotification) {
-        self.view.frame.origin.y += 235
-        searchMap.isUserInteractionEnabled = true
-        searchIconMap.isUserInteractionEnabled = true
-        
-    }
-    
-    /*
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        obsView.resignFirstResponder()
-    }
-    */
+
     
     func setupKeyboardDismissRecognizer(){
         let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -212,6 +225,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    /*
+     @objc func keyboardWillShow(sender: NSNotification) {
+     self.view.frame.origin.y -= 235
+     searchMap.isUserInteractionEnabled = false
+     searchIconMap.isUserInteractionEnabled = false
+     }
+     
+     @objc func keyboardWillHide(sender: NSNotification) {
+     self.view.frame.origin.y += 235
+     searchMap.isUserInteractionEnabled = true
+     searchIconMap.isUserInteractionEnabled = true
+     
+     }
+     */
+    /*
+     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+     obsView.resignFirstResponder()
+     }
+     */
+    
     
     
     /*

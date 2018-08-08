@@ -32,13 +32,6 @@
                                     <segue destination="CIc-Lz-RxQ" kind="unwind" unwindAction="unwindToMainWithSegue:" id="SDh-Yx-UVx"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="RjJ-LM-a0W">
-                                <rect key="frame" x="168" y="526" width="39" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="ptm-3Z-aCZ"/>
-                                    <constraint firstAttribute="width" constant="39" id="twm-dK-Co3"/>
-                                </constraints>
-                            </pageControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qual é o tipo de denúncia?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdH-gs-NTn">
                                 <rect key="frame" x="34.666666666666657" y="16" width="306" height="79"/>
                                 <constraints>
@@ -50,11 +43,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LAd-Mb-j3J">
-                                <rect key="frame" x="0.0" y="103" width="375" height="427"/>
+                                <rect key="frame" x="0.0" y="103" width="375" height="420"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="kJc-EK-Hjt"/>
-                                    <constraint firstAttribute="height" constant="427" id="tH9-Th-y1e"/>
+                                    <constraint firstAttribute="height" priority="999" constant="420" id="mjK-8h-GWJ"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Z9T-po-kUO">
                                     <size key="itemSize" width="376" height="394"/>
@@ -64,7 +56,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collection" id="ehr-6S-FxI" customClass="DenunciaCollectionViewCell" customModule="Foundation1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="16.666666666666668" width="376" height="394"/>
+                                        <rect key="frame" x="0.0" y="13" width="376" height="394"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="394"/>
@@ -75,7 +67,7 @@
                                                     <color key="backgroundColor" red="0.44329563129999999" green="0.86382772019999998" blue="0.35076480269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="276" id="1Lb-b5-jrR"/>
-                                                        <constraint firstAttribute="height" constant="374" id="Cih-Wf-HO0"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="374" id="Cih-Wf-HO0"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <state key="normal">
@@ -120,11 +112,12 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="JF5-6a-XVy" firstAttribute="top" secondItem="WPd-xP-noK" secondAttribute="bottom" constant="17" id="2B1-D8-DTW"/>
+                                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="XIc-gB-19l" secondAttribute="bottom" constant="11" id="8KY-go-EwS"/>
+                                            <constraint firstItem="XIc-gB-19l" firstAttribute="top" secondItem="WPd-xP-noK" secondAttribute="bottom" constant="-106" id="C5d-Mt-yDt"/>
                                             <constraint firstItem="JF5-6a-XVy" firstAttribute="centerX" secondItem="XIc-gB-19l" secondAttribute="centerX" id="DbH-Hw-rCe"/>
                                             <constraint firstItem="XIc-gB-19l" firstAttribute="centerX" secondItem="ehr-6S-FxI" secondAttribute="centerX" id="VNU-gY-lcg"/>
                                             <constraint firstItem="wZ2-U7-YNS" firstAttribute="centerX" secondItem="XIc-gB-19l" secondAttribute="centerX" id="cBU-Ss-4IW"/>
                                             <constraint firstItem="WPd-xP-noK" firstAttribute="centerX" secondItem="XIc-gB-19l" secondAttribute="centerX" id="fOm-3f-WSu"/>
-                                            <constraint firstItem="XIc-gB-19l" firstAttribute="top" secondItem="WPd-xP-noK" secondAttribute="bottom" constant="-106" id="gwo-Nv-xxN"/>
                                             <constraint firstItem="wZ2-U7-YNS" firstAttribute="top" secondItem="JF5-6a-XVy" secondAttribute="bottom" constant="26" id="jjC-lo-8fv"/>
                                             <constraint firstItem="XIc-gB-19l" firstAttribute="top" secondItem="ehr-6S-FxI" secondAttribute="top" constant="9" id="kbv-Ht-XxT"/>
                                         </constraints>
@@ -141,6 +134,13 @@
                                     <outlet property="delegate" destination="CWH-pV-eYK" id="RMI-tQ-pTg"/>
                                 </connections>
                             </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="RjJ-LM-a0W">
+                                <rect key="frame" x="168" y="538" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="ptm-3Z-aCZ"/>
+                                    <constraint firstAttribute="width" constant="39" id="twm-dK-Co3"/>
+                                </constraints>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.16078431372549018" green="0.18431372549019609" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -150,8 +150,9 @@
                             <constraint firstItem="RjJ-LM-a0W" firstAttribute="centerX" secondItem="wb0-sG-dVa" secondAttribute="centerX" id="Qdf-o3-UDW"/>
                             <constraint firstItem="LAd-Mb-j3J" firstAttribute="leading" secondItem="wb0-sG-dVa" secondAttribute="leading" id="Z9u-fH-U2C"/>
                             <constraint firstItem="QwW-nX-CoB" firstAttribute="centerX" secondItem="wb0-sG-dVa" secondAttribute="centerX" constant="0.5" id="Zzu-1D-MJy"/>
+                            <constraint firstItem="LAd-Mb-j3J" firstAttribute="width" secondItem="sbR-I1-RQH" secondAttribute="width" id="dEl-Sr-Yym"/>
                             <constraint firstItem="LAd-Mb-j3J" firstAttribute="trailing" secondItem="wb0-sG-dVa" secondAttribute="trailing" id="lUr-Yz-LEw"/>
-                            <constraint firstItem="RjJ-LM-a0W" firstAttribute="top" secondItem="LAd-Mb-j3J" secondAttribute="bottom" constant="-4" id="qoK-HE-xon"/>
+                            <constraint firstItem="RjJ-LM-a0W" firstAttribute="top" secondItem="LAd-Mb-j3J" secondAttribute="bottom" constant="15" id="qoK-HE-xon"/>
                             <constraint firstItem="FdH-gs-NTn" firstAttribute="top" secondItem="wb0-sG-dVa" secondAttribute="top" constant="16" id="tS5-QI-kXm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wb0-sG-dVa"/>
@@ -159,6 +160,7 @@
                     <navigationItem key="navigationItem" title="Denúncia" id="oCH-hR-SW4"/>
                     <connections>
                         <outlet property="collectionView" destination="LAd-Mb-j3J" id="ltS-l2-bYb"/>
+                        <outlet property="heightConstraint" destination="mjK-8h-GWJ" id="FqW-91-gth"/>
                         <outlet property="pageControl" destination="RjJ-LM-a0W" id="HFq-uf-ORP"/>
                     </connections>
                 </viewController>
@@ -369,6 +371,9 @@
                                                     <constraint firstAttribute="width" constant="27" id="xc6-Op-upz"/>
                                                 </constraints>
                                                 <state key="normal" image="camera_iOS"/>
+                                                <connections>
+                                                    <action selector="camera:" destination="U1Q-DO-wsc" eventType="touchUpInside" id="Ein-h2-ugm"/>
+                                                </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hdY-Al-Zfa">
                                                 <rect key="frame" x="30" y="396.33333333333331" width="315" height="213.99999999999994"/>
@@ -445,6 +450,7 @@
                     <navigationItem key="navigationItem" title="Informações" id="Eih-gm-krl"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="cameraOutlet" destination="dPo-so-ozx" id="uy0-4N-zWd"/>
                         <outlet property="denunciaView" destination="uj6-1R-Hya" id="mbs-pL-Uui"/>
                         <outlet property="imageIcon" destination="Kai-MM-xOG" id="AeW-8V-PP4"/>
                         <outlet property="labelAddress" destination="30w-jk-rN8" id="hdv-zP-c01"/>
