@@ -10,15 +10,17 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
+    
+    //Varibles
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pin: UIImageView!
     @IBOutlet weak var denunciaView: UIView!
-    
-    
-    
+    @IBOutlet weak var imageIcon: UIImageView!
+    @IBOutlet weak var searchMap: UIButton!
+    @IBOutlet weak var searchIconMap: UIButton!
     @IBOutlet weak var titleDenun: UILabel!
     @IBOutlet weak var labelAddress: UILabel!
-
     @IBOutlet weak var obsView: UITextView!
     
     var mainLabel = ""
@@ -33,6 +35,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //Keyboard Functions
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
+        //-----------------------------------------
+        
+        
         pin.layer.shadowColor = UIColor.black.cgColor
         pin.layer.shadowRadius = 1
         pin.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
@@ -41,7 +56,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         obsView.layer.cornerRadius = 10
         denunciaView.layer.cornerRadius = 10
         
+        dao.denuncia.obsUsuario = obsView.text
+        
         titleDenun.text! = dao.denuncia.tipoDenuncia
+        //labelAddress.text = dao.denuncia.address
         
         print(type(of: colorDenun))
         
@@ -75,10 +93,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if titleDenun.text == "Conexão Ilegal" {
             
             denunciaView.backgroundColor = UIColor(named: "water")
+            imageIcon.image = UIImage(named: "cancel")
             
         } else if titleDenun.text == "Vazamento" {
             
             denunciaView.backgroundColor = UIColor(named: "green")
+            imageIcon.image = UIImage(named: "drop")
             
         } else if titleDenun.text == "Falta d'Água" {
             
@@ -123,7 +143,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
+    @objc func keyboardWillShow(sender: NSNotification) {
+        self.view.frame.origin.y -= 235
+        searchMap.isUserInteractionEnabled = false
+        searchIconMap.isUserInteractionEnabled = false
+    }
     
+    @objc func keyboardWillHide(sender: NSNotification) {
+        self.view.frame.origin.y += 235
+        searchMap.isUserInteractionEnabled = true
+        searchIconMap.isUserInteractionEnabled = true
+        
+    }
+    
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        obsView.resignFirstResponder()
+    }
     
     
     override func didReceiveMemoryWarning() {

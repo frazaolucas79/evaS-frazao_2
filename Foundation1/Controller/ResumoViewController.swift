@@ -11,6 +11,10 @@ import MessageUI
 
 class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var obsLabel: UITextView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var denunciaView: UIView!
+    @IBOutlet weak var tipoDenunciaLabel: UILabel!
     var didFinishAction = false
     
     var mailContent:String {
@@ -51,7 +55,6 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     
     @IBAction func reportMail(_ sender: Any) {
         sendEmail()
-        didFinishAction = true
         
     }
     
@@ -59,7 +62,14 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     @IBOutlet weak var check: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        denunciaView.layer.cornerRadius = 10
+        
         descReview.text = dao.denuncia.obsUsuario
+        tipoDenunciaLabel.text = dao.denuncia.tipoDenuncia
+        locationLabel.text = dao.denuncia.address
+        obsLabel.text = dao.denuncia.obsUsuario
+        
         check.layer.shadowColor = UIColor.black.cgColor
         check.layer.shadowRadius = 1
         check.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
@@ -67,6 +77,24 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         descReview.layer.cornerRadius = 5
         
         dao.denuncias.append(dao.denuncia)
+        
+        
+        if tipoDenunciaLabel.text == "Conexão Ilegal" {
+            
+            denunciaView.backgroundColor = UIColor(named: "water")
+            
+        } else if tipoDenunciaLabel.text == "Vazamento" {
+            
+            denunciaView.backgroundColor = UIColor(named: "green")
+            
+        } else if tipoDenunciaLabel.text == "Falta d'Água" {
+            
+            denunciaView.backgroundColor = UIColor(named: "purple")
+        } else {
+            
+            denunciaView.backgroundColor = UIColor(named: "redish")
+        }
+        
         
         
         
@@ -85,12 +113,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
-        if didFinishAction == true {
-            
-            goToHomePage()
-            
-        }
+    
         
         
     }
@@ -108,6 +131,10 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         
         
     }
+    
+    
+    
+    
     
     
     

@@ -379,7 +379,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -446,10 +446,13 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="denunciaView" destination="uj6-1R-Hya" id="mbs-pL-Uui"/>
+                        <outlet property="imageIcon" destination="Kai-MM-xOG" id="AeW-8V-PP4"/>
                         <outlet property="labelAddress" destination="30w-jk-rN8" id="hdv-zP-c01"/>
                         <outlet property="mapView" destination="xOl-7A-bgp" id="PjY-fM-Vre"/>
                         <outlet property="obsView" destination="hdY-Al-Zfa" id="e2K-ba-Zye"/>
                         <outlet property="pin" destination="Qa6-8U-ujL" id="ncj-XH-x9V"/>
+                        <outlet property="searchIconMap" destination="g5G-vO-m8Y" id="L8V-Su-jev"/>
+                        <outlet property="searchMap" destination="zs8-Oa-QL6" id="sf0-NP-Ilw"/>
                         <outlet property="titleDenun" destination="aoO-KT-IYZ" id="t6g-0o-May"/>
                     </connections>
                 </viewController>
@@ -465,7 +468,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AsA-YQ-GvA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="288" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AsA-YQ-GvA">
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <color key="backgroundColor" red="0.22078093469999999" green="0.25244719700000001" blue="0.29090430699999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -473,11 +476,11 @@
                                     <constraint firstAttribute="width" constant="375" id="ml7-vb-Tbp"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="300" id="E2C-p5-dcC" customClass="DenunciaCreatedTableViewCell" customModule="Foundation1" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="288" id="E2C-p5-dcC" customClass="DenunciaCreatedTableViewCell" customModule="Foundation1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="288"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E2C-p5-dcC" id="4Ur-Ai-dhL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="288"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdm-6r-COT" customClass="RoundButton" customModule="Foundation1" customModuleProvider="target">
@@ -939,23 +942,15 @@
                                                 <rect key="frame" x="151" y="38" width="72" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tudo Pronto!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMk-Qb-aF6">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tudo Pronto!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMk-Qb-aF6">
                                                 <rect key="frame" x="117" y="125" width="140" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="32s-S3-xKl"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WF5-hL-XrR" customClass="RoundButton" customModule="Foundation1" customModuleProvider="target">
-                                                <rect key="frame" x="32" y="195" width="75" height="75"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" name="purple"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="maps-and-flags1" translatesAutoresizingMaskIntoConstraints="NO" id="4mz-a5-fsz">
                                                 <rect key="frame" x="32" y="327" width="41" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -977,10 +972,13 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" name="water"/>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" keyboardDismissMode="onDrag" editable="NO" text="- Vazamento de dois canos importantes na região" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7c-is-GA7">
-                                                <rect key="frame" x="32" y="453" width="332" height="214"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="onDrag" editable="NO" text="- Vazamento de dois canos importantes na região" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7c-is-GA7">
+                                                <rect key="frame" x="32" y="453" width="312" height="214"/>
                                                 <color key="backgroundColor" red="0.20133393124820503" green="0.23195749092793144" blue="0.27117119071658036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="312" id="5T6-t5-8k7"/>
+                                                    <constraint firstAttribute="height" constant="214" id="h12-h2-JqK"/>
+                                                </constraints>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1002,22 +1000,43 @@
                                                     <action selector="reportMail:" destination="3we-86-WNG" eventType="touchUpInside" id="OXs-R4-ORr"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Falta D'Água" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqc-lf-ie7">
-                                                <rect key="frame" x="117" y="214" width="153" height="37"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4R-hf-Wzh">
+                                                <rect key="frame" x="32" y="202" width="60" height="60"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ink" translatesAutoresizingMaskIntoConstraints="NO" id="mnm-p7-Hfu">
+                                                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="XNf-Zr-Skn"/>
+                                                    <constraint firstAttribute="width" constant="60" id="sUi-wq-W8k"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Falta D'Água" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lqc-lf-ie7">
+                                                <rect key="frame" x="117" y="198" width="153" height="68"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="Toq-oP-oly"/>
+                                                    <constraint firstAttribute="width" constant="153" id="yoD-vB-Ega"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ink" translatesAutoresizingMaskIntoConstraints="NO" id="zvF-3A-Vbp">
-                                                <rect key="frame" x="45" y="208" width="48" height="48"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="L7c-is-GA7" firstAttribute="leading" secondItem="eJK-1C-y3D" secondAttribute="leading" constant="32" id="0bU-9J-pRW"/>
+                                            <constraint firstItem="lqc-lf-ie7" firstAttribute="leading" secondItem="o4R-hf-Wzh" secondAttribute="trailing" constant="25" id="6Jz-09-K58"/>
+                                            <constraint firstItem="QMk-Qb-aF6" firstAttribute="centerX" secondItem="eJK-1C-y3D" secondAttribute="centerX" id="Cfc-6J-Yb5"/>
                                             <constraint firstAttribute="width" constant="375" id="Lub-aq-0FH"/>
+                                            <constraint firstItem="o4R-hf-Wzh" firstAttribute="top" secondItem="QMk-Qb-aF6" secondAttribute="bottom" constant="48" id="MVb-lX-EaO"/>
                                             <constraint firstAttribute="height" constant="812" id="aQQ-cG-ral"/>
+                                            <constraint firstItem="lqc-lf-ie7" firstAttribute="top" secondItem="QMk-Qb-aF6" secondAttribute="bottom" constant="44" id="jGo-TU-5fv"/>
+                                            <constraint firstItem="o4R-hf-Wzh" firstAttribute="leading" secondItem="eJK-1C-y3D" secondAttribute="leading" constant="32" id="phx-Y5-uHD"/>
+                                            <constraint firstItem="QMk-Qb-aF6" firstAttribute="top" secondItem="eJK-1C-y3D" secondAttribute="top" constant="125" id="quz-gL-adt"/>
+                                            <constraint firstItem="L7c-is-GA7" firstAttribute="top" secondItem="o4R-hf-Wzh" secondAttribute="bottom" constant="191" id="typ-HX-b2o"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="subviews">
@@ -1056,12 +1075,16 @@
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="check" destination="Z1v-3Y-z4C" id="vht-0Y-wcY"/>
+                        <outlet property="denunciaView" destination="o4R-hf-Wzh" id="dEO-0E-9dn"/>
                         <outlet property="descReview" destination="L7c-is-GA7" id="8sX-Eh-Au1"/>
+                        <outlet property="locationLabel" destination="DYC-ad-cJK" id="gvF-SA-hG3"/>
+                        <outlet property="obsLabel" destination="L7c-is-GA7" id="Xi0-s0-vB6"/>
+                        <outlet property="tipoDenunciaLabel" destination="lqc-lf-ie7" id="0f5-bN-qgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGn-mi-pna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3508" y="3024"/>
+            <point key="canvasLocation" x="3508" y="3023.6453201970444"/>
         </scene>
         <!--First Nav Controller-->
         <scene sceneID="NQt-ou-Hvi">

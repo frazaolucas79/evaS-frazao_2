@@ -30,7 +30,6 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         } else {
             self.tableView.restore()
             self.tableView.separatorStyle = .none
-            
         }
         
         return dao.denuncias.count
@@ -70,7 +69,11 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         cell.status.text = dao.denuncias[indexPath.row].status
         cell.address.text = dao.denuncias[indexPath.row].address
         
+        if dao.denuncias[indexPath.row].status == "Fechado" {
         
+        cell.confirm.setTitle("Desfazer Denúncia", for: .normal)
+        
+        }
         return cell
         
     }
