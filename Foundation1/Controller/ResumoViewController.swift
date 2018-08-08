@@ -62,6 +62,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
             break
         case MFMailComposeResult.sent:
             print("Mail sent")
+            dao.addOrderedReport(denuncia: dao.denuncia)
             break
         case MFMailComposeResult.failed:
             print("Mail sent failure: \(String(describing: error?.localizedDescription))")
@@ -108,7 +109,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         check.layer.shadowOpacity = 0.5
         descReview.layer.cornerRadius = 5
         
-        dao.addOrderedReport(denuncia: dao.denuncia)
+        
         
         
         if tipoDenunciaLabel.text == "Conexão Ilegal" {

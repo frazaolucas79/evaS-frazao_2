@@ -13,6 +13,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     //Varibles
     
+    @IBOutlet weak var heightScrollView: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pin: UIImageView!
     @IBOutlet weak var denunciaView: UIView!
@@ -24,6 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var obsView: UITextView!
     @IBOutlet weak var cameraOutlet: UIButton!
     @IBOutlet weak var imageUpload: UIImageView!
+    @IBOutlet weak var nextPage: UIButton!
     
     @IBOutlet weak var topConstNext: NSLayoutConstraint!
     
@@ -56,6 +59,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         imageUpload.image = image
         if (!hasButtonMoved) {
             topConstNext.constant += 92
+            heightScrollView.constant += 92
             hasButtonMoved = true
         }
         // print out the image size as a test
@@ -189,12 +193,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         //mapView.addAnnotation(annotation)
         //mapView.showAnnotations([annotation], animated: true)
-        
+        var address = "";
         locationManager.reverseGeocodeLocationWithCoordinates(location, onReverseGeocodingCompletionHandler: { (reverseGeocodeInfo, placemark, error) -> Void in
             
-            let address = reverseGeocodeInfo?.object(forKey: "formattedAddress") as! String
-            dao.denuncia.address = address
-            self.labelAddress.text = dao.denuncia.address
+            if (!CLLocationManager.locationServicesEnabled()){
+                print("----------> GPS INATIVO")
+            }
+            if (reverseGeocodeInfo == nil) {
+                self.labelAddress.text = "Sinal de GPS não encontrado"
+                self.nextPage.isUserInteractionEnabled = false
+            } else {
+                address = reverseGeocodeInfo?.object(forKey: "formattedAddress") as! String
+                dao.denuncia.address = address
+                self.labelAddress.text = dao.denuncia.address
+            }
         })
     }
     
