@@ -15,7 +15,8 @@ public struct Denuncia: Codable {
     var nome: String! = ""
     var obsUsuario: String = ""
     var status: String = ""
-    var date: String = "";
+    var dateString: String = ""
+    var date: Date
 }
 
 

@@ -21,7 +21,7 @@ class DenunciaCreatedTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         buttonView.layer.shadowColor = UIColor.black.cgColor
-        buttonView.layer.shadowRadius = 3
+        buttonView.layer.shadowRadius = 5
         buttonView.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         buttonView.layer.shadowOpacity = 0.5
         

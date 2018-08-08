@@ -9,7 +9,16 @@
 import UIKit
 import MessageUI
 
-class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate {
+class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate, UITextViewDelegate {
+    
+    @IBOutlet weak var imageIcon: UIImageView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var mainButton: UIButton!
+    @IBOutlet weak var obsLabel: UITextView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var denunciaView: UIView!
+    @IBOutlet weak var tipoDenunciaLabel: UILabel!
+    var didFinishAction = false
     
     var mailContent:String {
         return """
@@ -31,7 +40,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
                 subject = dao.denuncia.tipoDenuncia
             }
             let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate
+            mail.mailComposeDelegate = self as MFMailComposeViewControllerDelegate
             mail.setToRecipients(["bruno.leaoteixeira@gmail.com"])
             mail.setSubject("Denuncia -  \(subject)")
             mail.setMessageBody(mailContent, isHTML: true)
@@ -44,30 +53,105 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case MFMailComposeResult.cancelled:
+            print("Mail cancelled")
+            break
+        case MFMailComposeResult.saved:
+            print("Mail saved")
+            break
+        case MFMailComposeResult.sent:
+            print("Mail sent")
+            break
+        case MFMailComposeResult.failed:
+            print("Mail sent failure: \(String(describing: error?.localizedDescription))")
+            break
+        }
+        
         controller.dismiss(animated: true)
     }
     
     @IBAction func reportMail(_ sender: Any) {
+        
         sendEmail()
+        backButton.isUserInteractionEnabled = true
+        backButton.backgroundColor = UIColor(named: "water")
+        backButton.alpha = 1
+        mainButton.alpha = 0
+        mainButton.isUserInteractionEnabled = false
     }
     
     @IBOutlet weak var descReview: UITextView!
     @IBOutlet weak var check: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainButton.setTitle("Enviar", for: .normal)
+        mainButton.alpha = 1
+        mainButton.isUserInteractionEnabled = true
+        backButton.isUserInteractionEnabled = false
+        backButton.alpha = 0
+        
+        obsLabel.delegate = self
+        obsLabel.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
+        
+        denunciaView.layer.cornerRadius = 10
+        
         descReview.text = dao.denuncia.obsUsuario
+        tipoDenunciaLabel.text = dao.denuncia.tipoDenuncia
+        locationLabel.text = dao.denuncia.address
+        obsLabel.text = dao.denuncia.obsUsuario
+        
         check.layer.shadowColor = UIColor.black.cgColor
         check.layer.shadowRadius = 1
         check.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         check.layer.shadowOpacity = 0.5
         descReview.layer.cornerRadius = 5
         
-        dao.denuncias.append(dao.denuncia)
+        dao.addOrderedReport(denuncia: dao.denuncia)
+        
+        
+        if tipoDenunciaLabel.text == "Conexão Ilegal" {
+            
+            denunciaView.backgroundColor = UIColor(named: "water")
+             imageIcon.image = UIImage(named: "cancel")
+        } else if tipoDenunciaLabel.text == "Vazamento" {
+            
+            denunciaView.backgroundColor = UIColor(named: "green")
+            imageIcon.image = UIImage(named: "drop")
+        } else if tipoDenunciaLabel.text == "Falta d'Água" {
+            
+            denunciaView.backgroundColor = UIColor(named: "purple")
+            imageIcon.image = UIImage(named: "ink")
+        } else {
+            
+            denunciaView.backgroundColor = UIColor(named: "redish")
+            imageIcon.image = UIImage(named: "question")
+        }
+        
+        
+        
         
         
         
         // Do any additional setup after loading the view.
     }
+    
+    func goToHomePage() {
+        
+        let tipoDenunciaView: FirstNavController = self.storyboard?.instantiateViewController(withIdentifier: "FirstNavController2") as! FirstNavController
+        
+        self.navigationController?.present(tipoDenunciaView, animated: true, completion: nil)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+  
+        //self.performSegue(withIdentifier: "segueToMain", sender: self)
+        
+    }
+    
     
     
     @IBAction func shareButton(_ sender: Any) {
@@ -81,6 +165,10 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         
         
     }
+    
+    
+    
+    
     
     
     

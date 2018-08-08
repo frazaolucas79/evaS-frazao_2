@@ -23,11 +23,25 @@ class DAO{
         return URL(fileURLWithPath: DAO.documentDir.appendingPathComponent(file+".json"))
     }
     
+    func orderArrayByDate(denuncias: [Denuncia]) -> [Denuncia]{
+        return denuncias.sorted(by: sortByDate)
+    }
+    
+    func sortByDate(this: Denuncia, that: Denuncia) -> Bool {
+        return (this.date > that.date)
+    }
+    
+    func addOrderedReport(denuncia: Denuncia) {
+        self.denuncias.append(denuncia)
+        self.denuncias = orderArrayByDate(denuncias: denuncias)
+    }
+    
     //Salva a Classe Atividades
     func save(denuncias: [Denuncia], in file:String) {
         let url = getURLInDocumentDir(for: file)
+        let denunciasOrdered = orderArrayByDate(denuncias: denuncias)
         do {
-            try JSONEncoder().encode(denuncias).write(to: url)
+            try JSONEncoder().encode(denunciasOrdered).write(to: url)
             print("Salvo em", String(describing: url))
         } catch {
             print("Não foi possível salvar em", String(describing: url))
@@ -59,7 +73,7 @@ class DAO{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM"
         let result = formatter.string(from: date)
-        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto", date: result)
+        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto", dateString: result, date: date)
         return denuncia
     }
 }

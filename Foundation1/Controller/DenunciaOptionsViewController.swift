@@ -20,6 +20,7 @@ class DenunciaOptionsViewController: UIViewController, UICollectionViewDataSourc
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return nomes.count
@@ -61,11 +62,15 @@ class DenunciaOptionsViewController: UIViewController, UICollectionViewDataSourc
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
         layout.itemSize = CGSize(width: width, height: 394)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         collectionView?.collectionViewLayout = layout
+        
+        let height = collectionView.collectionViewLayout.collectionViewContentSize.height
+        heightConstraint.constant = height
+        
         
         
         // Do any additional setup after loading the view.
