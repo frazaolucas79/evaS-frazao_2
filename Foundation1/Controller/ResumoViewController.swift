@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate {
+class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate, UITextViewDelegate {
     
     @IBOutlet weak var obsLabel: UITextView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -62,6 +62,9 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     @IBOutlet weak var check: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        obsLabel.delegate = self
+        obsLabel.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
         
         denunciaView.layer.cornerRadius = 10
         

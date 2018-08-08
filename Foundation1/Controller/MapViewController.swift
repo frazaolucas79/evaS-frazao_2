@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextViewDelegate  {
     
     //Varibles
     
@@ -36,15 +36,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupKeyboardDismissRecognizer()
         
+        self.obsView.delegate = self
+        obsView.text = "Adicione suas observações. Elas são importantes na resolução da denúncia."
+        obsView.textColor = .lightGray
+        obsView.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
+        obsView.layer.cornerRadius = 10
         //Keyboard Functions
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
         
+        /*
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
-        
+        */
         //-----------------------------------------
         
         
@@ -53,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         pin.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         pin.layer.shadowOpacity = 0.5
         
-        obsView.layer.cornerRadius = 10
+        
         denunciaView.layer.cornerRadius = 10
         
         dao.denuncia.obsUsuario = obsView.text
@@ -136,12 +144,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
         })
     }
+    
+    
     func locationManager(manager:CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         if status != CLAuthorizationStatus.notDetermined || status != CLAuthorizationStatus.denied || status != CLAuthorizationStatus.restricted{
             getLocation()
         }
         
     }
+    
+    // Keyboard Functions
     
     @objc func keyboardWillShow(sender: NSNotification) {
         self.view.frame.origin.y -= 235
@@ -156,9 +168,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
-    
+    /*
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         obsView.resignFirstResponder()
+    }
+    */
+    
+    func setupKeyboardDismissRecognizer(){
+        let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(MapViewController.dismissKeyboard))
+        
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func dismissKeyboard()
+    {
+
+        view.endEditing(true)
+        
+    }
+    
+    
+    
+    //----------------------------------
+    
+    func textViewDidBeginEditing(_ obsView: UITextView) {
+        if obsView.textColor == .lightGray {
+            obsView.text = nil
+            obsView.textColor = .white
+        }
+    }
+    
+    func textViewDidEndEditing(_ obsView: UITextView) {
+        if obsView.text.isEmpty {
+            obsView.text = "Adicione suas observações. Elas são importantes na resolução da denúncia."
+            obsView.textColor = .lightGray
+        }
     }
     
     
