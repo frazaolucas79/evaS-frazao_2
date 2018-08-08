@@ -11,6 +11,7 @@ import MessageUI
 
 class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var imageIcon: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var obsLabel: UITextView!
@@ -98,17 +99,19 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         if tipoDenunciaLabel.text == "Conexão Ilegal" {
             
             denunciaView.backgroundColor = UIColor(named: "water")
-            
+             imageIcon.image = UIImage(named: "cancel")
         } else if tipoDenunciaLabel.text == "Vazamento" {
             
             denunciaView.backgroundColor = UIColor(named: "green")
-            
+            imageIcon.image = UIImage(named: "drop")
         } else if tipoDenunciaLabel.text == "Falta d'Água" {
             
             denunciaView.backgroundColor = UIColor(named: "purple")
+            imageIcon.image = UIImage(named: "ink")
         } else {
             
             denunciaView.backgroundColor = UIColor(named: "redish")
+            imageIcon.image = UIImage(named: "question")
         }
         
         

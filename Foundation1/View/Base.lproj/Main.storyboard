@@ -1130,6 +1130,7 @@
                         <outlet property="check" destination="Z1v-3Y-z4C" id="vht-0Y-wcY"/>
                         <outlet property="denunciaView" destination="o4R-hf-Wzh" id="dEO-0E-9dn"/>
                         <outlet property="descReview" destination="L7c-is-GA7" id="8sX-Eh-Au1"/>
+                        <outlet property="imageIcon" destination="mnm-p7-Hfu" id="9gh-ko-7SQ"/>
                         <outlet property="locationLabel" destination="DYC-ad-cJK" id="gvF-SA-hG3"/>
                         <outlet property="mainButton" destination="eHk-YG-7FC" id="fyJ-6o-wck"/>
                         <outlet property="obsLabel" destination="L7c-is-GA7" id="Xi0-s0-vB6"/>

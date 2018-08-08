@@ -149,9 +149,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         } else if titleDenun.text == "Falta d'Água" {
             
             denunciaView.backgroundColor = UIColor(named: "purple")
+            imageIcon.image = UIImage(named: "ink")
         } else {
             
             denunciaView.backgroundColor = UIColor(named: "redish")
+            imageIcon.image = UIImage(named: "question")
         }
         
         
