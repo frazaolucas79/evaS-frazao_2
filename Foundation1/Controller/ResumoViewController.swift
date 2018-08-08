@@ -11,6 +11,8 @@ import MessageUI
 
 class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var obsLabel: UITextView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var denunciaView: UIView!
@@ -54,14 +56,25 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     }
     
     @IBAction func reportMail(_ sender: Any) {
-        sendEmail()
         
+        sendEmail()
+        backButton.isUserInteractionEnabled = true
+        backButton.backgroundColor = UIColor(named: "water")
+        backButton.alpha = 1
+        mainButton.alpha = 0
+        mainButton.isUserInteractionEnabled = false
     }
     
     @IBOutlet weak var descReview: UITextView!
     @IBOutlet weak var check: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainButton.setTitle("Enviar", for: .normal)
+        mainButton.alpha = 1
+        mainButton.isUserInteractionEnabled = true
+        backButton.isUserInteractionEnabled = false
+        backButton.alpha = 0
         
         obsLabel.delegate = self
         obsLabel.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
@@ -114,10 +127,10 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    
-        
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+  
+        //self.performSegue(withIdentifier: "segueToMain", sender: self)
         
     }
     

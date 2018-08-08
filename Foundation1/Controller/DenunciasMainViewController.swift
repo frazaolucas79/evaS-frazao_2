@@ -25,8 +25,8 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dao.denuncias.count == 0 {
             self.tableView.center = self.view.center
-            self.tableView.center.y -= 400
-            self.tableView.setEmptyMessage("Você ainda não criou nenhuma denúncia :(")
+            self.tableView.center.y -= 0
+            self.tableView.setEmptyMessage("Para criar uma nova denúncia, toque no \"+\" acima.")
         } else {
             self.tableView.restore()
             self.tableView.separatorStyle = .none
@@ -47,6 +47,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         dao.denuncias[indexPath![1]].status = "Fechado"
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
         //self.view.setNeedsDisplay()
+
         self.tableView.reloadData()
     }
     
@@ -71,7 +72,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         
         if dao.denuncias[indexPath.row].status == "Fechado" {
         
-        cell.confirm.setTitle("Desfazer Denúncia", for: .normal)
+        //cell.confirm.setTitle("Desfazer Denúncia", for: .normal)
         
         }
         return cell
@@ -95,7 +96,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.alwaysBounceVertical = true
+       // tableView.alwaysBounceVertical = true
         
         tableView.isScrollEnabled = true
         dao.denuncias = dao.getDenuncias(from: "Denuncias")
@@ -128,13 +129,14 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
 extension UITableView {
     
     func setEmptyMessage(_ message: String) {
-        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0 , width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
         messageLabel.textColor = .white
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = .center;
-        messageLabel.font = UIFont(name: "HelveticaNeue", size: 25)
+        messageLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
         messageLabel.sizeToFit()
+      
         
         
         self.backgroundView = messageLabel;

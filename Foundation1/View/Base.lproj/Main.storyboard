@@ -325,7 +325,7 @@
                                                     <constraint firstAttribute="width" constant="191" id="DRd-FV-GGK"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="redish"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sua localização" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kwD-rM-AhL">
@@ -527,7 +527,7 @@
                                                     <rect key="frame" x="34" y="143" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rua Marquês de São Vicente, 28 - Gávea - Rio de Janeiro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0q-0b-oqW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rua Marquês de São Vicente, 28 - Gávea - Rio de Janeiro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="d0q-0b-oqW">
                                                     <rect key="frame" x="67" y="140" width="282" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -537,14 +537,14 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Em Aberto" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ym-Wd-bsG">
                                                     <rect key="frame" x="264" y="40" width="85" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <color key="textColor" red="0.34901960784313724" green="0.73725490196078436" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" name="water"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ft-yw-h9N">
                                                     <rect key="frame" x="95" y="221" width="189" height="36"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <state key="normal" title="Confirmar Denúncia">
-                                                        <color key="titleColor" red="0.36470588235294116" green="0.73333333333333328" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleColor" name="water"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="closeReport:" destination="t0b-lQ-h3B" eventType="touchUpInside" id="O7l-ws-K7K"/>
@@ -961,14 +961,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maps-and-flags1" translatesAutoresizingMaskIntoConstraints="NO" id="4mz-a5-fsz">
-                                                <rect key="frame" x="31" y="287" width="41" height="45"/>
+                                                <rect key="frame" x="31" y="277" width="41" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="41" id="Fdq-yM-OJb"/>
                                                     <constraint firstAttribute="height" constant="45" id="VaM-YO-pg2"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rua Marquês de São Vicente, 28 - Gávea - Rio de Janeiro" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DYC-ad-cJK">
-                                                <rect key="frame" x="82" y="287" width="263" height="82"/>
+                                                <rect key="frame" x="82" y="277" width="263" height="82"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="82" id="Tdk-Qy-Chf"/>
                                                     <constraint firstAttribute="width" constant="263" id="tUu-hB-afp"/>
@@ -988,7 +988,7 @@
                                                 <color key="backgroundColor" name="water"/>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="onDrag" editable="NO" text="- Vazamento de dois canos importantes na região" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7c-is-GA7">
-                                                <rect key="frame" x="30" y="396" width="315" height="214"/>
+                                                <rect key="frame" x="30" y="386" width="315" height="214"/>
                                                 <color key="backgroundColor" red="0.20133393124820503" green="0.23195749092793144" blue="0.27117119071658036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="315" id="5T6-t5-8k7"/>
@@ -1023,7 +1023,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHk-YG-7FC" customClass="RoundButton" customModule="Foundation1" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="644" width="315" height="40"/>
+                                                <rect key="frame" x="30" y="619" width="315" height="40"/>
                                                 <color key="backgroundColor" red="0.4199545979" green="0.75884157419999998" blue="0.34781041740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="XxR-Lu-OA3"/>
@@ -1042,6 +1042,26 @@
                                                     <action selector="reportMail:" destination="3we-86-WNG" eventType="touchUpInside" id="OXs-R4-ORr"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRQ-Aa-cN6" customClass="RoundButton" customModule="Foundation1" customModuleProvider="target">
+                                                <rect key="frame" x="30" y="619" width="315" height="40"/>
+                                                <color key="backgroundColor" name="water"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="315" id="0VA-MJ-Dl4"/>
+                                                    <constraint firstAttribute="height" constant="40" id="mQL-Sz-s4l"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Voltar para o Início">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="mXn-kN-kXj" kind="unwind" unwindAction="unwindToMainWithSegue:" id="RL8-Ba-DAy"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1052,18 +1072,21 @@
                                             <constraint firstAttribute="trailing" secondItem="eHk-YG-7FC" secondAttribute="trailing" constant="30" id="Cyi-vG-lB6"/>
                                             <constraint firstItem="o4R-hf-Wzh" firstAttribute="top" secondItem="QMk-Qb-aF6" secondAttribute="bottom" constant="30" id="MVb-lX-EaO"/>
                                             <constraint firstItem="L7c-is-GA7" firstAttribute="trailing" secondItem="eHk-YG-7FC" secondAttribute="trailing" id="QrP-hf-T9Y"/>
-                                            <constraint firstAttribute="bottom" secondItem="eHk-YG-7FC" secondAttribute="bottom" constant="68" id="R21-v7-c21"/>
+                                            <constraint firstAttribute="bottom" secondItem="eHk-YG-7FC" secondAttribute="bottom" constant="93" id="R21-v7-c21"/>
                                             <constraint firstItem="Z1v-3Y-z4C" firstAttribute="top" secondItem="eJK-1C-y3D" secondAttribute="top" constant="38" id="SDJ-p3-oNP"/>
+                                            <constraint firstItem="KRQ-Aa-cN6" firstAttribute="trailing" secondItem="eHk-YG-7FC" secondAttribute="trailing" id="ShD-jg-TmA"/>
                                             <constraint firstItem="L7c-is-GA7" firstAttribute="leading" secondItem="eHk-YG-7FC" secondAttribute="leading" id="Xz4-0a-sTa"/>
                                             <constraint firstAttribute="height" constant="752" id="aQQ-cG-ral"/>
-                                            <constraint firstItem="eHk-YG-7FC" firstAttribute="top" secondItem="L7c-is-GA7" secondAttribute="bottom" constant="34" id="aaK-9Z-RRh"/>
+                                            <constraint firstItem="eHk-YG-7FC" firstAttribute="top" secondItem="L7c-is-GA7" secondAttribute="bottom" constant="19" id="aaK-9Z-RRh"/>
                                             <constraint firstItem="o4R-hf-Wzh" firstAttribute="leading" secondItem="4mz-a5-fsz" secondAttribute="leading" id="b0p-Jp-tYk"/>
                                             <constraint firstItem="o4R-hf-Wzh" firstAttribute="leading" secondItem="eJK-1C-y3D" secondAttribute="leading" constant="31" id="biH-93-hOv"/>
+                                            <constraint firstItem="KRQ-Aa-cN6" firstAttribute="top" secondItem="L7c-is-GA7" secondAttribute="bottom" constant="19" id="cH7-jS-TI5"/>
                                             <constraint firstItem="lqc-lf-ie7" firstAttribute="top" secondItem="QMk-Qb-aF6" secondAttribute="bottom" constant="26" id="jGo-TU-5fv"/>
-                                            <constraint firstItem="DYC-ad-cJK" firstAttribute="top" secondItem="o4R-hf-Wzh" secondAttribute="bottom" constant="43" id="sEC-X9-u40"/>
+                                            <constraint firstItem="KRQ-Aa-cN6" firstAttribute="leading" secondItem="eHk-YG-7FC" secondAttribute="leading" id="pL9-Kc-v2K"/>
+                                            <constraint firstItem="DYC-ad-cJK" firstAttribute="top" secondItem="o4R-hf-Wzh" secondAttribute="bottom" constant="33" id="sEC-X9-u40"/>
                                             <constraint firstItem="QMk-Qb-aF6" firstAttribute="top" secondItem="Z1v-3Y-z4C" secondAttribute="bottom" constant="15" id="sbt-1S-KqS"/>
-                                            <constraint firstItem="L7c-is-GA7" firstAttribute="top" secondItem="o4R-hf-Wzh" secondAttribute="bottom" constant="152" id="typ-HX-b2o"/>
-                                            <constraint firstItem="4mz-a5-fsz" firstAttribute="top" secondItem="o4R-hf-Wzh" secondAttribute="bottom" constant="43" id="u41-Xj-fEA"/>
+                                            <constraint firstItem="L7c-is-GA7" firstAttribute="top" secondItem="o4R-hf-Wzh" secondAttribute="bottom" constant="142" id="typ-HX-b2o"/>
+                                            <constraint firstItem="4mz-a5-fsz" firstAttribute="top" secondItem="o4R-hf-Wzh" secondAttribute="bottom" constant="33" id="u41-Xj-fEA"/>
                                             <constraint firstItem="DYC-ad-cJK" firstAttribute="leading" secondItem="4mz-a5-fsz" secondAttribute="trailing" constant="10" id="zYa-WR-FRE"/>
                                         </constraints>
                                         <variation key="default">
@@ -1103,15 +1126,18 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="840"/>
                     <connections>
+                        <outlet property="backButton" destination="KRQ-Aa-cN6" id="PGR-C6-CsT"/>
                         <outlet property="check" destination="Z1v-3Y-z4C" id="vht-0Y-wcY"/>
                         <outlet property="denunciaView" destination="o4R-hf-Wzh" id="dEO-0E-9dn"/>
                         <outlet property="descReview" destination="L7c-is-GA7" id="8sX-Eh-Au1"/>
                         <outlet property="locationLabel" destination="DYC-ad-cJK" id="gvF-SA-hG3"/>
+                        <outlet property="mainButton" destination="eHk-YG-7FC" id="fyJ-6o-wck"/>
                         <outlet property="obsLabel" destination="L7c-is-GA7" id="Xi0-s0-vB6"/>
                         <outlet property="tipoDenunciaLabel" destination="lqc-lf-ie7" id="0f5-bN-qgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGn-mi-pna" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mXn-kN-kXj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3508" y="3023.6453201970444"/>
         </scene>
@@ -1155,6 +1181,12 @@
         </namedColor>
         <namedColor name="purple">
             <color red="0.36500000953674316" green="0.3059999942779541" blue="0.42699998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="redish">
+            <color red="1" green="0.41999998688697815" blue="0.41999998688697815" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="water">
+            <color red="0.30588235294117649" green="0.80392156862745101" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="water">
             <color red="0.30588235294117649" green="0.80392156862745101" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

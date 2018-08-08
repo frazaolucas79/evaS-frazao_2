@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate  {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     //Varibles
     
@@ -72,6 +72,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         obsView.textColor = .lightGray
         obsView.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
         obsView.layer.cornerRadius = 10
+        obsView.layer.shadowColor = UIColor.black.cgColor
+        obsView.layer.shadowRadius = 3
+        obsView.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
+        obsView.layer.shadowOpacity = 0.5
+
+        
+        
         //Keyboard Functions
       
         /*
@@ -217,6 +224,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if obsView.text.isEmpty {
             obsView.text = "Adicione suas observações. Elas são importantes na resolução da denúncia."
             obsView.textColor = .lightGray
+        } else {
+            dao.denuncia.obsUsuario = obsView.text
         }
     }
     
