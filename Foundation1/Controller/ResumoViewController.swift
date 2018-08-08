@@ -28,6 +28,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         <p><b>Observações do Usuario:</b> \(dao.denuncia.obsUsuario)</p>
         """
     }
+    
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             var subject:String
@@ -62,6 +63,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
             break
         case MFMailComposeResult.sent:
             print("Mail sent")
+            dao.addOrderedReport(denuncia: dao.denuncia)
             break
         case MFMailComposeResult.failed:
             print("Mail sent failure: \(String(describing: error?.localizedDescription))")
@@ -108,7 +110,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         check.layer.shadowOpacity = 0.5
         descReview.layer.cornerRadius = 5
         
-        dao.addOrderedReport(denuncia: dao.denuncia)
+        
         
         
         if tipoDenunciaLabel.text == "Conexão Ilegal" {
@@ -142,13 +144,6 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         let tipoDenunciaView: FirstNavController = self.storyboard?.instantiateViewController(withIdentifier: "FirstNavController2") as! FirstNavController
         
         self.navigationController?.present(tipoDenunciaView, animated: true, completion: nil)
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-  
-        //self.performSegue(withIdentifier: "segueToMain", sender: self)
         
     }
     

@@ -63,7 +63,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+      
+            self.labelAddress.text = dao.denuncia.address
+        
+    }
     
     
     
