@@ -170,55 +170,40 @@
         <!--Pesquisar-->
         <scene sceneID="6CN-7u-FMf">
             <objects>
-                <viewController title="Pesquisar" id="sLR-vb-FiC" customClass="PesquisarViewController" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ypr-Ub-dNI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q8p-aK-TQD">
-                                <rect key="frame" x="0.0" y="144" width="375" height="668"/>
-                                <connections>
-                                    <outlet property="delegate" destination="sLR-vb-FiC" id="AGX-5e-CaX"/>
-                                </connections>
-                            </mapView>
-                            <searchBar contentMode="redraw" placeholder="Procure por um lugar ou endereço" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jmk-zj-ofD">
-                                <rect key="frame" x="0.0" y="88" width="375" height="56"/>
-                                <color key="barTintColor" name="coal"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="sLR-vb-FiC" id="Su1-Tz-9GC"/>
-                                </connections>
-                            </searchBar>
-                        </subviews>
-                        <color key="backgroundColor" name="coal"/>
-                        <constraints>
-                            <constraint firstItem="Jmk-zj-ofD" firstAttribute="trailing" secondItem="l6f-nY-nRb" secondAttribute="trailing" id="8Cz-Ja-PNO"/>
-                            <constraint firstAttribute="bottom" secondItem="Q8p-aK-TQD" secondAttribute="bottom" id="KwK-94-esa"/>
-                            <constraint firstItem="Q8p-aK-TQD" firstAttribute="leading" secondItem="l6f-nY-nRb" secondAttribute="leading" id="L0S-yi-xco"/>
-                            <constraint firstItem="Jmk-zj-ofD" firstAttribute="leading" secondItem="l6f-nY-nRb" secondAttribute="leading" id="VOT-Ea-j3E"/>
-                            <constraint firstItem="Jmk-zj-ofD" firstAttribute="top" secondItem="l6f-nY-nRb" secondAttribute="top" id="Vaa-pj-cME"/>
-                            <constraint firstItem="Q8p-aK-TQD" firstAttribute="top" secondItem="Jmk-zj-ofD" secondAttribute="bottom" id="nSQ-Ix-ZLJ"/>
-                            <constraint firstItem="Q8p-aK-TQD" firstAttribute="trailing" secondItem="l6f-nY-nRb" secondAttribute="trailing" id="zTu-0y-APp"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="l6f-nY-nRb"/>
-                    </view>
-                    <connections>
-                        <outlet property="mapView" destination="Q8p-aK-TQD" id="Ulf-E1-gHW"/>
-                        <outlet property="searchDisplayController" destination="0or-52-nS4" id="oBa-bv-FIh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mH9-XB-A9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="0or-52-nS4">
                     <connections>
                         <outlet property="delegate" destination="sLR-vb-FiC" id="apu-a2-Som"/>
-                        <outlet property="searchBar" destination="Jmk-zj-ofD" id="7Cw-Bj-bgJ"/>
                         <outlet property="searchContentsController" destination="sLR-vb-FiC" id="WH9-vd-ZwX"/>
                         <outlet property="searchResultsDataSource" destination="sLR-vb-FiC" id="a38-b7-qc6"/>
                         <outlet property="searchResultsDelegate" destination="sLR-vb-FiC" id="Nb8-df-Kjn"/>
                     </connections>
                 </searchDisplayController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mH9-XB-A9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="Pesquisar" id="sLR-vb-FiC" customClass="PesquisarViewController" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ypr-Ub-dNI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PYd-iW-rai">
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" name="coal"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="PYd-iW-rai" secondAttribute="bottom" id="OML-SY-b7n"/>
+                            <constraint firstItem="PYd-iW-rai" firstAttribute="leading" secondItem="l6f-nY-nRb" secondAttribute="leading" id="RcZ-aM-cdy"/>
+                            <constraint firstItem="l6f-nY-nRb" firstAttribute="trailing" secondItem="PYd-iW-rai" secondAttribute="trailing" id="g3J-0E-YCv"/>
+                            <constraint firstItem="PYd-iW-rai" firstAttribute="top" secondItem="l6f-nY-nRb" secondAttribute="top" id="i6T-Jj-Cqz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="l6f-nY-nRb"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="PYd-iW-rai" id="zW9-mG-BB6"/>
+                        <outlet property="searchDisplayController" destination="0or-52-nS4" id="oBa-bv-FIh"/>
+                    </connections>
+                </viewController>
             </objects>
-            <point key="canvasLocation" x="3388" y="2243"/>
+            <point key="canvasLocation" x="3388" y="2242.6108374384239"/>
         </scene>
         <!--Localização-->
         <scene sceneID="V9p-gs-TFd">
@@ -456,6 +441,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vi7-6N-RhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2596" y="2991.8719211822663"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8DO-t6-pJh">
+            <objects>
+                <navigationController id="Lgy-YZ-QeB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vct-dS-6tt">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Np7-KA-yBY" kind="relationship" relationship="rootViewController" id="vdT-In-i5M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Beo-1c-JDI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="225" y="825"/>
+        </scene>
+        <!--View Map Controller-->
+        <scene sceneID="P0a-72-3YL">
+            <objects>
+                <viewController id="Np7-KA-yBY" customClass="ViewMapController" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RKX-gI-Xjd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qpe-Qf-Tcn">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Np7-KA-yBY" id="5CJ-ZY-ege"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qpe-Qf-Tcn" firstAttribute="leading" secondItem="aE2-uy-3Vt" secondAttribute="leading" id="52D-VG-eoC"/>
+                            <constraint firstItem="aE2-uy-3Vt" firstAttribute="trailing" secondItem="Qpe-Qf-Tcn" secondAttribute="trailing" id="5GM-9p-IMg"/>
+                            <constraint firstItem="Qpe-Qf-Tcn" firstAttribute="top" secondItem="aE2-uy-3Vt" secondAttribute="top" id="HwV-QC-0Km"/>
+                            <constraint firstItem="aE2-uy-3Vt" firstAttribute="bottom" secondItem="Qpe-Qf-Tcn" secondAttribute="bottom" id="zRf-qd-73Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aE2-uy-3Vt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gZ9-Ts-kQL"/>
+                    <connections>
+                        <outlet property="mapView" destination="Qpe-Qf-Tcn" id="wDa-hQ-oa0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hq9-lH-tkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1308" y="879"/>
+        </scene>
+        <!--Location Search Table-->
+        <scene sceneID="QTX-fx-dHK">
+            <objects>
+                <tableViewController storyboardIdentifier="LocationSearchTable" id="CXd-yF-XvT" customClass="LocationSearchTable" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ePa-EF-csD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="exe-0F-UU6" detailTextLabel="UOC-2F-rny" style="IBUITableViewCellStyleSubtitle" id="piM-91-vii" customClass="LocationCell" customModule="Foundation1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="piM-91-vii" id="yay-qQ-TJH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="exe-0F-UU6">
+                                            <rect key="frame" x="16.000000000000004" y="5" width="33.333333333333336" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UOC-2F-rny">
+                                            <rect key="frame" x="15.999999999999996" y="25.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="subtitleLabel" destination="UOC-2F-rny" id="TIx-03-cLa"/>
+                                    <outlet property="titleLabel" destination="exe-0F-UU6" id="3e1-py-WEW"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRT-mv-efB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2041" y="879"/>
         </scene>
         <!--Minhas Denúncias-->
         <scene sceneID="4gG-78-Mx8">
@@ -1057,6 +1135,7 @@
                     <connections>
                         <outlet property="check" destination="Z1v-3Y-z4C" id="vht-0Y-wcY"/>
                         <outlet property="descReview" destination="L7c-is-GA7" id="8sX-Eh-Au1"/>
+                        <outlet property="labelText" destination="DYC-ad-cJK" id="oKt-Nk-iZr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGn-mi-pna" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1105,10 +1184,10 @@
             <color red="0.36500000953674316" green="0.3059999942779541" blue="0.42699998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="water">
-            <color red="0.3059999942779541" green="0.80400002002716064" blue="0.76899999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30588235294117649" green="0.80392156862745101" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Pp-FS-RIg"/>
+        <segue reference="rM8-T4-CK1"/>
     </inferredMetricsTieBreakers>
 </document>

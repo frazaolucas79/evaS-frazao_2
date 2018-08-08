@@ -14,6 +14,9 @@
 		2AD923BB20D937FC00463786 /* DenunciaOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD923BA20D937FB00463786 /* DenunciaOptionsViewController.swift */; };
 		2AD923BD20D9383800463786 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD923BC20D9383800463786 /* MapViewController.swift */; };
 		80DA7100F19EF2C3C4F9E61B /* Pods_Foundation1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE36951194D4118E23A7C0B /* Pods_Foundation1Tests.framework */; };
+		89D8C801211A48F4006A19C8 /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8C800211A48F4006A19C8 /* LocationSearchTable.swift */; };
+		89D8C803211B7C3E006A19C8 /* ViewMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8C802211B7C3E006A19C8 /* ViewMapController.swift */; };
+		89D8C805211B83BA006A19C8 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D8C804211B83BA006A19C8 /* LocationCell.swift */; };
 		AA1D654D20D91D1B0046884A /* DenunciaOverViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1D654C20D91D1B0046884A /* DenunciaOverViewVC.swift */; };
 		AA1E9B0C20D7D28B003DCF6C /* DenunciaCreatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E9B0B20D7D28B003DCF6C /* DenunciaCreatedTableViewCell.swift */; };
 		AA1E9B0E20D7D36B003DCF6C /* DenunciasMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E9B0D20D7D36B003DCF6C /* DenunciasMainViewController.swift */; };
@@ -60,6 +63,9 @@
 		8156B503A9C5872CB50B8A46 /* Pods-Foundation1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foundation1Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foundation1Tests/Pods-Foundation1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		829D5723C1C41568E5CBE198 /* Pods_Foundation1UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foundation1UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B2B8AF9A10005A44B99DE3 /* Pods-Foundation1UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foundation1UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foundation1UITests/Pods-Foundation1UITests.release.xcconfig"; sourceTree = "<group>"; };
+		89D8C800211A48F4006A19C8 /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		89D8C802211B7C3E006A19C8 /* ViewMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMapController.swift; sourceTree = "<group>"; };
+		89D8C804211B83BA006A19C8 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		AA1D654C20D91D1B0046884A /* DenunciaOverViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenunciaOverViewVC.swift; sourceTree = "<group>"; };
 		AA1E9B0B20D7D28B003DCF6C /* DenunciaCreatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenunciaCreatedTableViewCell.swift; sourceTree = "<group>"; };
 		AA1E9B0D20D7D36B003DCF6C /* DenunciasMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenunciasMainViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +135,8 @@
 		2A69789C20D298E4007E4789 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				89D8C800211A48F4006A19C8 /* LocationSearchTable.swift */,
+				89D8C804211B83BA006A19C8 /* LocationCell.swift */,
 				CF8532CC2118E6B7008CDAF4 /* ResumoViewController.swift */,
 				AAD2A89820D2C26000AA9B96 /* ImagePickerCollectionViewCell.swift */,
 				AAA8E8BC20D2BA4E00007D0E /* PesquisarViewController.swift */,
@@ -139,6 +147,7 @@
 				2AD923B820D937B800463786 /* DenunciaCollectionViewCell.swift */,
 				2AD923BA20D937FB00463786 /* DenunciaOptionsViewController.swift */,
 				2AD923BC20D9383800463786 /* MapViewController.swift */,
+				89D8C802211B7C3E006A19C8 /* ViewMapController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -446,11 +455,14 @@
 				2AD923B920D937B800463786 /* DenunciaCollectionViewCell.swift in Sources */,
 				CF8532CD2118E6B7008CDAF4 /* ResumoViewController.swift in Sources */,
 				AAA8E8B720D0144A00007D0E /* LocationManager.swift in Sources */,
+				89D8C805211B83BA006A19C8 /* LocationCell.swift in Sources */,
 				AA1E9B0E20D7D36B003DCF6C /* DenunciasMainViewController.swift in Sources */,
 				AAD2A89920D2C26000AA9B96 /* ImagePickerCollectionViewCell.swift in Sources */,
+				89D8C803211B7C3E006A19C8 /* ViewMapController.swift in Sources */,
 				AAA8E8B920D141E600007D0E /* Round Button.swift in Sources */,
 				AA1D654D20D91D1B0046884A /* DenunciaOverViewVC.swift in Sources */,
 				AADDD19D20A472DF00108EFA /* AppDelegate.swift in Sources */,
+				89D8C801211A48F4006A19C8 /* LocationSearchTable.swift in Sources */,
 				2AD923B720D9374C00463786 /* DescViewController.swift in Sources */,
 				AA1E9B0C20D7D28B003DCF6C /* DenunciaCreatedTableViewCell.swift in Sources */,
 				2AD923BD20D9383800463786 /* MapViewController.swift in Sources */,
@@ -629,13 +641,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TS7ZPKY84Q;
+				DEVELOPMENT_TEAM = 83KH3JF2CE;
 				INFOPLIST_FILE = Foundation1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Foundation1;
+				PRODUCT_BUNDLE_IDENTIFIER = Foundation2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -648,13 +660,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TS7ZPKY84Q;
+				DEVELOPMENT_TEAM = 83KH3JF2CE;
 				INFOPLIST_FILE = Foundation1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Foundation1;
+				PRODUCT_BUNDLE_IDENTIFIER = Foundation2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

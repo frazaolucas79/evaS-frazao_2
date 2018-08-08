@@ -72,6 +72,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         getLocation()
         
+        
         if titleDenun.text == "Conexão Ilegal" {
             
             denunciaView.backgroundColor = UIColor(named: "water")
@@ -112,7 +113,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.reverseGeocodeLocationWithCoordinates(location, onReverseGeocodingCompletionHandler: { (reverseGeocodeInfo, placemark, error) -> Void in
             
             let address = reverseGeocodeInfo?.object(forKey: "formattedAddress") as! String
-            dao.denuncia.address = address
+           // dao.denuncia.address = address
             
         })
     }
