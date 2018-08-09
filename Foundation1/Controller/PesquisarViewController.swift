@@ -28,7 +28,7 @@ class PesquisarViewController : UIViewController {
         resultSearchController?.searchResultsUpdater = locationSearchTable
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
-        searchBar.placeholder = "Search for places"
+        searchBar.placeholder = "Procure por algum lugar"
         navigationItem.titleView = resultSearchController?.searchBar
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
@@ -36,8 +36,25 @@ class PesquisarViewController : UIViewController {
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
     }
+
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.navigationItem.setHidesBackButton(true, animated:true);
+    }
     
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.navigationItem.setHidesBackButton(false, animated:true);
+    }
 }
+    
+    
+    
+
+
+
+
+
+
 
 extension PesquisarViewController : CLLocationManagerDelegate {
     

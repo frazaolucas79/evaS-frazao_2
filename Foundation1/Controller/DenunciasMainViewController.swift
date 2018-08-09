@@ -24,12 +24,11 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dao.denuncias.count == 0 {
-            self.tableView.center = self.view.center
-            self.tableView.center.y -= 0
+            //self.tableView.center = self.view.center
+            //self.tableView.center.y -= 200
             self.tableView.setEmptyMessage("Para criar uma nova denúncia, toque no \"+\" acima.")
         } else {
             self.tableView.restore()
-            self.tableView.separatorStyle = .none
         }
         
         return dao.denuncias.count
@@ -146,7 +145,7 @@ extension UITableView {
     
     func restore() {
         self.backgroundView = nil
-        self.separatorStyle = .singleLine
+        self.separatorStyle = .none
     }
 }
 

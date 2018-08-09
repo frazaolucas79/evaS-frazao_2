@@ -36,6 +36,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var coreLocationManager = CLLocationManager()
     var locationManager:LocationManager!
     
+    @IBAction func unwindToLocation(segue: UIStoryboardSegue) {
+        //nothing goes here
+    }
+    
+    
     @IBAction func updateLocation(_ sender: Any) {
        
     }
@@ -57,6 +62,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         dao.denuncia.fotoData = image.data
         imageUpload.image = image
+        imageUpload.layer.cornerRadius = 10
         if (!hasButtonMoved) {
             topConstNext.constant += 92
             heightScrollView.constant += 92

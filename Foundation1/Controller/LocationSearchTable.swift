@@ -36,7 +36,15 @@ class LocationSearchTable : UITableViewController {
         )
         return addressLine
     }
+
+   
+
 }
+
+
+
+
+
 
 
 extension LocationSearchTable : UISearchResultsUpdating {
@@ -69,6 +77,9 @@ extension LocationSearchTable {
         let selectedItem = matchingItems[indexPath.row].placemark
         cell.titleLabel?.text = selectedItem.name
         cell.subtitleLabel?.text = parseAddress(selectedItem: selectedItem)
+        
+        
+        
         return cell
     }
 }
