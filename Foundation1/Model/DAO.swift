@@ -83,7 +83,7 @@ class DAO{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM"
         let result = formatter.string(from: date)
-        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto", dateString: result, date: date, closeDate: nil, duracaoDenuncia: 10)
+        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto", dateString: result, date: date, closeDate: nil, duracaoDenuncia: 1)
         return denuncia
     }
 }

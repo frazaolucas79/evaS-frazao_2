@@ -64,9 +64,9 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         
         cell.data.text = dao.denuncias[indexPath.row].dateString
         cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
-       
+
         print(cell.tipoDenuncia)
-        cell.qntDias.text = String(dao.denuncias[indexPath.row].duracaoDenuncia) + " dias"
+        cell.qntDias.text = String(durationDate(date: dao.denuncias[indexPath.row].date, row: indexPath.row)) + " dias"
         cell.status.text = dao.denuncias[indexPath.row].status
         cell.address.text = dao.denuncias[indexPath.row].address
         
@@ -78,7 +78,14 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
         
     }
-    
+    func durationDate( date: Date, row: Int)-> Int{
+        let userCalendar = Calendar.current
+        var todayDate = Date()
+        
+        let day = Int(dao.denuncias[row].date.timeIntervalSinceNow / 3600)
+
+        return day;
+    }
     func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath)->Int {
         /*
         let tipoDenunciaView: MapViewController = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
