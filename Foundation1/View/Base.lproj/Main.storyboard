@@ -605,7 +605,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4 dias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXy-up-fx5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 dias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXy-up-fx5">
                                                     <rect key="frame" x="34" y="105" width="87" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -651,6 +651,11 @@
                                                 <constraint firstItem="Rdm-6r-COT" firstAttribute="trailing" secondItem="4Ur-Ai-dhL" secondAttribute="trailingMargin" id="bCx-CL-6eL"/>
                                                 <constraint firstItem="9ft-yw-h9N" firstAttribute="leading" secondItem="4Ur-Ai-dhL" secondAttribute="leadingMargin" constant="80" id="isT-cZ-Qjl"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="eXy-up-fx5"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.22078093469555407" green="0.25244719699337825" blue="0.29090430699481862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -1220,6 +1225,7 @@
                         <outlet property="denunciaView" destination="o4R-hf-Wzh" id="dEO-0E-9dn"/>
                         <outlet property="descReview" destination="L7c-is-GA7" id="8sX-Eh-Au1"/>
                         <outlet property="imageIcon" destination="mnm-p7-Hfu" id="9gh-ko-7SQ"/>
+                        <outlet property="labelText" destination="DYC-ad-cJK" id="oKt-Nk-iZr"/>
                         <outlet property="locationLabel" destination="DYC-ad-cJK" id="gvF-SA-hG3"/>
                         <outlet property="mainButton" destination="eHk-YG-7FC" id="fyJ-6o-wck"/>
                         <outlet property="obsLabel" destination="L7c-is-GA7" id="Xi0-s0-vB6"/>

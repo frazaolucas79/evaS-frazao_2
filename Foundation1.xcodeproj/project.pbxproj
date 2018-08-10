@@ -33,6 +33,7 @@
 		AADDD1B220A472E100108EFA /* Foundation1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADDD1B120A472E100108EFA /* Foundation1Tests.swift */; };
 		AADDD1BD20A472E100108EFA /* Foundation1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADDD1BC20A472E100108EFA /* Foundation1UITests.swift */; };
 		CB0D4ABEB724F036E7FD1904 /* Pods_Foundation1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829D5723C1C41568E5CBE198 /* Pods_Foundation1UITests.framework */; };
+		CF3BB445211CC18F00FB91A0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF3BB444211CC18F00FB91A0 /* MapKit.framework */; };
 		CF8532CD2118E6B7008CDAF4 /* ResumoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8532CC2118E6B7008CDAF4 /* ResumoViewController.swift */; };
 		F7274FDDC64F5AD0EB711989 /* Pods_Foundation1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE11FFD7A01951E62FE290E6 /* Pods_Foundation1.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +91,7 @@
 		AADDD1BC20A472E100108EFA /* Foundation1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation1UITests.swift; sourceTree = "<group>"; };
 		AADDD1BE20A472E100108EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE11FFD7A01951E62FE290E6 /* Pods_Foundation1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foundation1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF3BB444211CC18F00FB91A0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CF8532CC2118E6B7008CDAF4 /* ResumoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumoViewController.swift; sourceTree = "<group>"; };
 		DF64C6FFB4695989F799D494 /* Pods-Foundation1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foundation1Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foundation1Tests/Pods-Foundation1Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EA351E4CE030E9E0E5F0199C /* Pods-Foundation1UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foundation1UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foundation1UITests/Pods-Foundation1UITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF3BB445211CC18F00FB91A0 /* MapKit.framework in Frameworks */,
 				F7274FDDC64F5AD0EB711989 /* Pods_Foundation1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +173,7 @@
 		72BBD4CC2DCA376A327982A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF3BB444211CC18F00FB91A0 /* MapKit.framework */,
 				BE11FFD7A01951E62FE290E6 /* Pods_Foundation1.framework */,
 				FEE36951194D4118E23A7C0B /* Pods_Foundation1Tests.framework */,
 				829D5723C1C41568E5CBE198 /* Pods_Foundation1UITests.framework */,
@@ -315,6 +319,11 @@
 				TargetAttributes = {
 					AADDD19820A472DF00108EFA = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					AADDD1AC20A472E100108EFA = {
 						CreatedOnToolsVersion = 9.3;
@@ -646,6 +655,7 @@
 			baseConfigurationReference = 4C08BF8E2123CF1207C409A1 /* Pods-Foundation1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5547NWK4BP;
 				INFOPLIST_FILE = Foundation1/Info.plist;
@@ -653,10 +663,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Foundation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myapp.evaS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -665,6 +677,7 @@
 			baseConfigurationReference = F0AEC09211DA4B787F9AA22D /* Pods-Foundation1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5547NWK4BP;
 				INFOPLIST_FILE = Foundation1/Info.plist;
@@ -672,10 +685,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Foundation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.myapp.evaS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

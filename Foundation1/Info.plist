@@ -13,7 +13,7 @@
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.myapp.evaS</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -29,11 +29,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Autorize o uso da sua câmera.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Oi</string>
+	<string>Autorize o uso da sua localização.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Oi</string>
+	<string>Autorize o uso da sua localização.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Oi</string>
+	<string>Autorize o uso da sua localização.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Autorize o uso da sua biblioteca.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
