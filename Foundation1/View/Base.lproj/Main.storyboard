@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jqj-0P-Roa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jqj-0P-Roa">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -645,7 +645,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ft-yw-h9N">
                                                     <rect key="frame" x="95" y="221" width="189" height="36"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <state key="normal" title="Confirmar Denúncia">
+                                                    <state key="normal" title="Fechar Denúncia">
                                                         <color key="titleColor" name="water"/>
                                                     </state>
                                                     <connections>
@@ -672,11 +672,6 @@
                                                 <constraint firstItem="Rdm-6r-COT" firstAttribute="top" secondItem="4yl-tU-dUI" secondAttribute="bottom" constant="-35" id="dmV-Ui-bDE"/>
                                                 <constraint firstItem="eXy-up-fx5" firstAttribute="leading" secondItem="8jg-Q2-gWN" secondAttribute="leading" id="iSB-LT-i00"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="eXy-up-fx5"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.22078093469555407" green="0.25244719699337825" blue="0.29090430699481862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>

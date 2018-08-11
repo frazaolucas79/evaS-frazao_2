@@ -51,6 +51,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         } else {
             // show failure alert
         }
+        dao.addOrderedReport(denuncia: dao.denuncia)
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

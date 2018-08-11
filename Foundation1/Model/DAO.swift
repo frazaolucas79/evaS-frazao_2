@@ -37,13 +37,14 @@ class DAO{
     }
     // fecha denuncia e calcula duracao
     func closeReport(indexPath: IndexPath?) {
-        let userCalendar = Calendar.current
         
-        dao.denuncias[indexPath![1]].status = "Fechado"
-        dao.denuncias[indexPath![1]].closeDate = Date()
-        dao.denuncias[indexPath![1]].duracaoDenuncia = Int(userCalendar.dateComponents([.day],
-                                                                                   from: dao.denuncias[indexPath![1]].date,
-                                                                                   to: dao.denuncias[indexPath![1]].closeDate!).day!)
+        if (dao.denuncias[indexPath![1]].status == "Fechado") {
+            dao.denuncias[indexPath![1]].status = "Em aberto"
+            dao.denuncias[indexPath![1]].closeDate = nil
+        } else {
+            dao.denuncias[indexPath![1]].status = "Fechado"
+            dao.denuncias[indexPath![1]].closeDate = Date()
+        }
     }
     
     //Salva a Classe Atividades

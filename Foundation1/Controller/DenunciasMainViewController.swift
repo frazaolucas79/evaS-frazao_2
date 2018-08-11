@@ -15,11 +15,6 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     
     var rowConfirm: Int = 0
     
-    //var datas = ["18/06", "21/05","12/05", "12/05","12/05","12/05"]
-    
-    
-    var qntDiasLabel = ["12 dias", "20 dias", "30 dias","30 dias","30 dias","30 dias"]
-    
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         //nothing goes here
     }
@@ -44,10 +39,10 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         
         let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to:self.tableView)
         let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
-        let _cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
-        print(indexPath![1])
+        //let _cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
+        //print(indexPath![1])
         dao.closeReport(indexPath: indexPath)
-        dao.denuncias[indexPath![1]].status = "Fechado"
+        //dao.denuncias[indexPath![1]].status = "Fechado"
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
         _cell.status.textColor = UIColor(named: "redish")
         //_cell.heightConsButton.constant = 200
@@ -60,33 +55,37 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
-    
+        //print("oi")
         
         cell.data.text = dao.denuncias[indexPath.row].dateString
         cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
 
         print(cell.tipoDenuncia)
-        cell.qntDias.text = String(durationDate(date: dao.denuncias[indexPath.row].date, row: indexPath.row)) + " dias"
+        
+        let days = durationDate(date: dao.denuncias[indexPath.row].date, row: indexPath.row)
+        cell.qntDias.text = days == 1 ? String(days) + " dia" : String(days) + " dias"
         cell.status.text = dao.denuncias[indexPath.row].status
         cell.address.text = dao.denuncias[indexPath.row].address
         
         if dao.denuncias[indexPath.row].status == "Fechado" {
         
-       // cell.status.textColor = UIColor(named: "redish")
+            cell.confirm.setTitle("Reabrir Denúncia", for: .normal)
         
-            }
-       
+        } else {
+            cell.confirm.setTitle("Fechar Denúncia", for: .normal)
+        }
         return cell
         
     }
    
     
     func durationDate( date: Date, row: Int)-> Int{
-        let userCalendar = Calendar.current
-        var todayDate = Date()
-        
-        let day = Int(dao.denuncias[row].date.timeIntervalSinceNow / 3600)
-
+        var day = 0;
+        if (dao.denuncias[row].closeDate == nil){
+            day = -Int(date.timeIntervalSinceNow / 3600)
+        } else {
+            day = -Int(date.timeIntervalSince(dao.denuncias[row].closeDate!) / 3600)
+        }
         return day;
     }
     
@@ -107,10 +106,9 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         return indexPath.row
- }
+        
+    }
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
