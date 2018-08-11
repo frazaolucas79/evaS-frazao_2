@@ -11,15 +11,15 @@ import UIKit
 class OverviewTableCell: UITableViewCell {
    
     // Variáveis
-    
     @IBOutlet weak var data: UILabel!
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var tipoDenuncia: UILabel!
     @IBOutlet weak var endereco: UILabel!
     @IBOutlet weak var obsUsuario: UITextView!
-    
-    
-    
+    @IBOutlet weak var duracaoDenuncia: UILabel!
+    @IBOutlet weak var alteraStatusQuestion: UILabel!
+
+    @IBOutlet weak var alteraStatusB: RoundButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

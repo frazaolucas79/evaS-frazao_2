@@ -39,15 +39,11 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         
         let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to:self.tableView)
         let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
-        //let _cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
-        //print(indexPath![1])
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
         dao.closeReport(indexPath: indexPath)
-        //dao.denuncias[indexPath![1]].status = "Fechado"
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
-        _cell.status.textColor = UIColor(named: "redish")
-        //_cell.heightConsButton.constant = 200
-        //self.view.setNeedsDisplay()
-
+        cell.status.textColor = UIColor(named: "redish")
+        
         self.tableView.reloadData()
     }
     
@@ -62,7 +58,8 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
 
         print(cell.tipoDenuncia)
         
-        let days = durationDate(date: dao.denuncias[indexPath.row].date, row: indexPath.row)
+        let days = DateUtils.durationDate(date: dao.denuncias[indexPath.row].date, closeDate: dao.denuncias[indexPath.row].closeDate)
+            //durationDate(date: dao.denuncias[indexPath.row].date, row: indexPath.row)
         cell.qntDias.text = days == 1 ? String(days) + " dia" : String(days) + " dias"
         cell.status.text = dao.denuncias[indexPath.row].status
         cell.address.text = dao.denuncias[indexPath.row].address
@@ -82,15 +79,15 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     func durationDate( date: Date, row: Int)-> Int{
         var day = 0;
         if (dao.denuncias[row].closeDate == nil){
-            day = -Int(date.timeIntervalSinceNow / 3600)
+            day = -Int(date.timeIntervalSinceNow / 86400)
         } else {
-            day = -Int(date.timeIntervalSince(dao.denuncias[row].closeDate!) / 3600)
+            day = -Int(date.timeIntervalSince(dao.denuncias[row].closeDate!) / 86400)
         }
         return day;
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath)->Int {
+    private func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath)->Int {
         
        // let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
         
