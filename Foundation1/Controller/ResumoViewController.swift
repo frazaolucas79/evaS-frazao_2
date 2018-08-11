@@ -22,10 +22,10 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     
     var mailContent:String {
         return """
-        <h4>Olá, Somos do aplicativo evaS e estamos repassando informação sobre algum desperdicio de água (\(dao.denuncia.tipoDenuncia)).</h4>
+        <h4>Olá, somos do aplicativo evaS e estamos repassando informação sobre algum desperdício de água (\(dao.denuncia.tipoDenuncia)).</h4>
         <br>Como preservar água é uma vontade de todos estamos pedindo encarecidamente para consertar o problema :).
         O problema se encontra localizado em: <b>\(dao.denuncia.address)</b>
-        <p><b>Observações do Usuario:</b> \(dao.denuncia.obsUsuario)</p>
+        <p><b>Observações do Usuário:</b> \(dao.denuncia.obsUsuario)</p>
         """
     }
     
@@ -43,7 +43,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self as MFMailComposeViewControllerDelegate
             mail.setToRecipients(["bruno.leaoteixeira@gmail.com"])
-            mail.setSubject("Denuncia -  \(subject)")
+            mail.setSubject("Denúncia -  \(subject)")
             mail.setMessageBody(mailContent, isHTML: true)
             
             
@@ -63,7 +63,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
             break
         case MFMailComposeResult.sent:
             print("Mail sent")
-            dao.addOrderedReport(denuncia: dao.denuncia)
+            //dao.addOrderedReport(denuncia: dao.denuncia)
             break
         case MFMailComposeResult.failed:
             print("Mail sent failure: \(String(describing: error?.localizedDescription))")
@@ -74,7 +74,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     }
     
     @IBAction func reportMail(_ sender: Any) {
-        
+        dao.addOrderedReport(denuncia: dao.denuncia)
         sendEmail()
         backButton.isUserInteractionEnabled = true
         backButton.backgroundColor = UIColor(named: "water")
