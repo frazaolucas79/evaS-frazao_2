@@ -671,6 +671,11 @@
                                                 <constraint firstItem="Rdm-6r-COT" firstAttribute="top" secondItem="4yl-tU-dUI" secondAttribute="bottom" constant="-35" id="dmV-Ui-bDE"/>
                                                 <constraint firstItem="eXy-up-fx5" firstAttribute="leading" secondItem="8jg-Q2-gWN" secondAttribute="leading" id="iSB-LT-i00"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="eXy-up-fx5"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.22078093469555407" green="0.25244719699337825" blue="0.29090430699481862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -1517,6 +1522,7 @@
                         <outlet property="denunciaView" destination="o4R-hf-Wzh" id="dEO-0E-9dn"/>
                         <outlet property="descReview" destination="L7c-is-GA7" id="8sX-Eh-Au1"/>
                         <outlet property="imageIcon" destination="mnm-p7-Hfu" id="9gh-ko-7SQ"/>
+                        <outlet property="labelText" destination="DYC-ad-cJK" id="oKt-Nk-iZr"/>
                         <outlet property="locationLabel" destination="DYC-ad-cJK" id="gvF-SA-hG3"/>
                         <outlet property="mainButton" destination="eHk-YG-7FC" id="fyJ-6o-wck"/>
                         <outlet property="obsLabel" destination="L7c-is-GA7" id="Xi0-s0-vB6"/>
