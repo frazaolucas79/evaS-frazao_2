@@ -64,7 +64,8 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
             break
         case MFMailComposeResult.sent:
             print("Mail sent")
-            //dao.addOrderedReport(denuncia: dao.denuncia)
+            dao.addOrderedReport(denuncia: dao.denuncia)
+            self.performSegue(withIdentifier: "resumotb", sender: self)
             break
         case MFMailComposeResult.failed:
             print("Mail sent failure: \(String(describing: error?.localizedDescription))")
@@ -75,13 +76,14 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     }
     
     @IBAction func reportMail(_ sender: Any) {
-        dao.addOrderedReport(denuncia: dao.denuncia)
+       //dao.addOrderedReport(denuncia: dao.denuncia)
         sendEmail()
         backButton.isUserInteractionEnabled = true
         backButton.backgroundColor = UIColor(named: "water")
         backButton.alpha = 1
         mainButton.alpha = 0
         mainButton.isUserInteractionEnabled = false
+        
     }
     
     @IBOutlet weak var descReview: UITextView!

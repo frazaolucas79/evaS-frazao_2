@@ -16,6 +16,7 @@ class DenunciaCreatedTableViewCell: UITableViewCell {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var buttonView: UIButton!
     @IBOutlet weak var confirm: UIButton!
+    @IBOutlet weak var heightConsButton: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,9 +25,7 @@ class DenunciaCreatedTableViewCell: UITableViewCell {
         buttonView.layer.shadowRadius = 5
         buttonView.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         buttonView.layer.shadowOpacity = 0.5
-        
-        
-        
+    
         
         // Initialization code
     }

@@ -10,7 +10,9 @@ import UIKit
 
 class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     @IBOutlet weak var tableView: UITableView!
+    
     var rowConfirm: Int = 0
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
@@ -18,24 +20,20 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if dao.denuncias.count == 0 {
             //self.tableView.center = self.view.center
             //self.tableView.center.y -= 200
             self.tableView.setEmptyMessage("Para criar uma nova denúncia, toque no \"+\" acima.")
-        } else {
-            self.tableView.restore()
+        }
+            else {
+            
+                self.tableView.restore()
         }
         
         return dao.denuncias.count
     }
-    
-    
-    @IBAction func createAnimations(_ sender: Any) {
-    
-    
-        
-    }
-    
+ 
 
     @IBAction func closeReport(_ sender: Any) {
         
@@ -46,13 +44,18 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         dao.closeReport(indexPath: indexPath)
         //dao.denuncias[indexPath![1]].status = "Fechado"
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
+        _cell.status.textColor = UIColor(named: "redish")
+        //_cell.heightConsButton.constant = 200
         //self.view.setNeedsDisplay()
 
         self.tableView.reloadData()
     }
     
+   
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
+        //print("oi")
         
         cell.data.text = dao.denuncias[indexPath.row].dateString
         cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
@@ -74,6 +77,8 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
         
     }
+   
+    
     func durationDate( date: Date, row: Int)-> Int{
         var day = 0;
         if (dao.denuncias[row].closeDate == nil){
@@ -83,17 +88,20 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         }
         return day;
     }
+    
+    
     func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath)->Int {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
+       // let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
         
       //  let tipoDenunciaView: DenunciaOverViewVC = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! DenunciaOverViewVC
         
-        let collectionView: OverviewDenunciaCell = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! OverviewDenunciaCell
+        //let collectionView: OverviewDenunciaCell = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! OverviewDenunciaCell
         
        // collectionView.tipoDenúncia.text = dao.denuncias[indexPath.row].tipoDenuncia
-    
+
         dao.getNewDenuncia()
+   
         //self.navigationController?.pushViewController(tipoDenunciaView, animated: true)
         return indexPath.row
     }
@@ -107,7 +115,6 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         dao.denuncias = dao.getDenuncias(from: "Denuncias")
         
         
-        
         // Do any additional setup after loading the view.
     }
 
@@ -118,7 +125,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        tableView.reloadData()
+        //tableView.reloadData()
          animateTable()
         
     }
@@ -158,7 +165,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func animateTable() {
-       // self.tableView.reloadData()
+       self.tableView.reloadData()
         
         let cells = tableView.visibleCells
         let tableHeight: CGFloat = tableView.bounds.size.height
