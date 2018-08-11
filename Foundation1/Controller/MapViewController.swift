@@ -49,7 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let vc = UIImagePickerController()
         vc.sourceType = .camera
         vc.allowsEditing = true
-        vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        vc.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         present(vc, animated: true)
     
     }
@@ -140,11 +140,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // descView.layer.cornerRadius = 10
         
-        coreLocationManager.delegate = self as! CLLocationManagerDelegate
+        coreLocationManager.delegate = self as CLLocationManagerDelegate
         
         locationManager = LocationManager.sharedInstance
         
-        mapView.delegate = self as! MKMapViewDelegate
+        mapView.delegate = self as MKMapViewDelegate
         mapView.showsScale = true
         mapView.showsPointsOfInterest = true
         mapView.showsUserLocation = true
@@ -153,7 +153,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         coreLocationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled(){
-            coreLocationManager.delegate = self as! CLLocationManagerDelegate
+            coreLocationManager.delegate = self as CLLocationManagerDelegate
             coreLocationManager.desiredAccuracy = kCLLocationAccuracyBest
             coreLocationManager.startUpdatingLocation()
         }
@@ -222,8 +222,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         })
     }
     
-    
-    func locationManager(manager:CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus){
+    private func locationManager(manager:CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         if status != CLAuthorizationStatus.notDetermined || status != CLAuthorizationStatus.denied || status != CLAuthorizationStatus.restricted{
             getLocation()
         }

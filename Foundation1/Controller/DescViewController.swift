@@ -37,7 +37,7 @@ class DescViewController: UIViewController , UINavigationControllerDelegate, UII
         let vc = UIImagePickerController()
         vc.sourceType = .camera
         vc.allowsEditing = true
-        vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        vc.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         present(vc, animated: true)
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
