@@ -28,6 +28,14 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         
         return dao.denuncias.count
     }
+    
+    
+    @IBAction func createAnimations(_ sender: Any) {
+    
+    
+        
+    }
+    
 
     @IBAction func closeReport(_ sender: Any) {
         
@@ -75,14 +83,23 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         }
         return day;
     }
-    private func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath)->Int {
-        /*
-        let tipoDenunciaView: MapViewController = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        print(nomes[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath)->Int {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
+        
+      //  let tipoDenunciaView: DenunciaOverViewVC = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! DenunciaOverViewVC
+        
+        let collectionView: OverviewDenunciaCell = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! OverviewDenunciaCell
+        
+       // collectionView.tipoDenúncia.text = dao.denuncias[indexPath.row].tipoDenuncia
+        
+        
+    
         dao.getNewDenuncia()
-        dao.denuncia.tipoDenuncia = nomes[indexPath.row]
-        self.navigationController?.pushViewController(tipoDenunciaView, animated: true)
-        */
+        
+        
+        //self.navigationController?.pushViewController(tipoDenunciaView, animated: true)
+        
         
         return indexPath.row
         
@@ -97,6 +114,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         dao.denuncias = dao.getDenuncias(from: "Denuncias")
         
         
+        
         // Do any additional setup after loading the view.
     }
 
@@ -108,7 +126,13 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
+         animateTable()
+        
     }
+    
+   
+    
+    
     /*
     // MARK: - Navigation
 
@@ -119,6 +143,55 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     }
     */
 
+    
+    // Animações
+    
+    /*
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 0.1)
+    
+        UITableView.animate(
+            withDuration: 0.3,
+            animations: {
+                
+                cell.layer.transform = CATransform3DMakeScale(1.0, 1.0, 1.0)
+        }, completion: nil)
+    
+    
+    }
+    */
+    
+    
+    func animateTable() {
+       // self.tableView.reloadData()
+        
+        let cells = tableView.visibleCells
+        let tableHeight: CGFloat = tableView.bounds.size.height
+        
+        for i in cells {
+            let cell: UITableViewCell = i as UITableViewCell
+            cell.transform = CGAffineTransform(translationX: 0, y: tableHeight)
+        }
+        
+        var index = 0
+        
+        for a in cells {
+            self.tableView.isHidden = false
+            let cell: UITableViewCell = a as UITableViewCell
+            UIView.animate(withDuration: 1.0, delay: 0.04 * Double(index), usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .transitionFlipFromTop, animations: {
+                cell.transform = CGAffineTransform(translationX: 0, y: 0);
+            }, completion: nil)
+            
+            index += 1
+        }
+    }
+
+    
+    //------------------------------------
+    
+    
 }
 
 extension UITableView {
