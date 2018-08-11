@@ -97,6 +97,27 @@ class DenunciaOptionsViewController: UIViewController, UICollectionViewDataSourc
         self.pageControl.currentPage = indexPath.row
     }
     
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? DenunciaCollectionViewCell {
+                cell.imgButton.transform = .init(scaleX: 0.95, y: 0.95)
+                cell.contentView.backgroundColor = .clear
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? DenunciaCollectionViewCell {
+                cell.imgButton.transform = .identity
+                cell.contentView.backgroundColor = .clear
+            }
+        }
+    }
+    
+   
+    
+    
     
     
     /*

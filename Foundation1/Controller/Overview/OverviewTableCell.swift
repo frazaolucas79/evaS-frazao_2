@@ -9,10 +9,25 @@
 import UIKit
 
 class OverviewTableCell: UITableViewCell {
-
+   
+    // Variáveis
+    
+    @IBOutlet weak var data: UILabel!
+    @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var tipoDenuncia: UILabel!
+    @IBOutlet weak var endereco: UILabel!
+    @IBOutlet weak var obsUsuario: UITextView!
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        obsUsuario.layer.cornerRadius = 10
+        obsUsuario.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
