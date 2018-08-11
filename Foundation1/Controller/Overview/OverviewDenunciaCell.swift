@@ -9,7 +9,7 @@
 import UIKit
 
 class OverviewDenunciaCell: UICollectionViewCell {
-    @IBOutlet weak var tipoDenúncia: UILabel!
+    @IBOutlet weak var tipoDenuncia: UILabel!
     @IBOutlet weak var endereco: UILabel!
     @IBOutlet weak var data: UILabel!
     @IBOutlet weak var status: UILabel!

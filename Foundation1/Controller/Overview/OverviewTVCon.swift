@@ -41,11 +41,11 @@ class OverviewTVCon: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Overview", for: indexPath) as! OverviewTableCell
         
-        cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
-        cell.endereco.text = dao.denuncias[indexPath.row].address
-        cell.status.text = dao.denuncias[indexPath.row].status
-        cell.data.text = dao.denuncias[indexPath.row].dateString
-        cell.obsUsuario.text = dao.denuncias[indexPath.row].obsUsuario
+//        cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
+//        cell.endereco.text = dao.denuncias[indexPath.row].address
+//        cell.status.text = dao.denuncias[indexPath.row].status
+//        cell.data.text = dao.denuncias[indexPath.row].dateString
+//        cell.obsUsuario.text = dao.denuncias[indexPath.row].obsUsuario
         
 
         // Configure the cell...

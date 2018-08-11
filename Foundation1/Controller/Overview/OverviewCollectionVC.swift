@@ -71,7 +71,7 @@ class OverviewCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! OverviewDenunciaCell
     
-        cell.tipoDenúncia.text = dao.denuncias[indexPath.row].tipoDenuncia
+        cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
         cell.endereco.text = dao.denuncias[indexPath.row].address
         cell.status.text = dao.denuncias[indexPath.row].status
         cell.data.text = dao.denuncias[indexPath.row].dateString

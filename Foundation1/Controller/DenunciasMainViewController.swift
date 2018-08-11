@@ -92,17 +92,10 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         let collectionView: OverviewDenunciaCell = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! OverviewDenunciaCell
         
        // collectionView.tipoDenúncia.text = dao.denuncias[indexPath.row].tipoDenuncia
-        
-        
     
         dao.getNewDenuncia()
-        
-        
         //self.navigationController?.pushViewController(tipoDenunciaView, animated: true)
-        
-        
         return indexPath.row
-        
     }
     
     override func viewDidLoad() {
