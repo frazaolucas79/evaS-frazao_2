@@ -51,7 +51,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         } else {
             // show failure alert
         }
-        dao.addOrderedReport(denuncia: dao.denuncia)
+        //dao.addOrderedReport(denuncia: dao.denuncia)
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -78,11 +78,12 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     @IBAction func reportMail(_ sender: Any) {
        //dao.addOrderedReport(denuncia: dao.denuncia)
         sendEmail()
-        backButton.isUserInteractionEnabled = true
-        backButton.backgroundColor = UIColor(named: "water")
-        backButton.alpha = 1
-        mainButton.alpha = 0
         mainButton.isUserInteractionEnabled = false
+        backButton.isUserInteractionEnabled = false
+        backButton.backgroundColor = UIColor(named: "water")
+        backButton.alpha = 0
+        mainButton.alpha = 0
+        
         
     }
     
