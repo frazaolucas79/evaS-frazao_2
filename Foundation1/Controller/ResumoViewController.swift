@@ -18,12 +18,13 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var denunciaView: UIView!
     @IBOutlet weak var tipoDenunciaLabel: UILabel!
+    
     var didFinishAction = false
     
     var mailContent:String {
         return """
         <h4>Olá, somos do aplicativo evaS e estamos repassando informação sobre algum desperdício de água (\(dao.denuncia.tipoDenuncia)).</h4>
-        <br>Como preservar água é uma vontade de todos estamos pedindo encarecidamente para consertar o problema :).
+        <br>Como preservar água é uma vontade de todos, estamos pedindo encarecidamente que o problema seja resolvido :).
         O problema se encontra localizado em: <b>\(dao.denuncia.address)</b>
         <p><b>Observações do Usuário:</b> \(dao.denuncia.obsUsuario)</p>
         """
@@ -45,13 +46,12 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
             mail.setToRecipients(["bruno.leaoteixeira@gmail.com"])
             mail.setSubject("Denúncia -  \(subject)")
             mail.setMessageBody(mailContent, isHTML: true)
-            
-            
             present(mail, animated: true)
         } else {
             // show failure alert
         }
-        //dao.addOrderedReport(denuncia: dao.denuncia)
+        
+      //  dao.addOrderedReport(denuncia: dao.denuncia)
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -64,6 +64,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
             break
         case MFMailComposeResult.sent:
             print("Mail sent")
+            isFirstLoad = true
             dao.addOrderedReport(denuncia: dao.denuncia)
             self.performSegue(withIdentifier: "resumotb", sender: self)
             break

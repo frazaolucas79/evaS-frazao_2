@@ -46,6 +46,9 @@ class OverviewTVCon: UITableViewController {
         self.indexPathRow = indexPath.row
         cell = tableView.dequeueReusableCell(withIdentifier: "Overview", for: indexPath) as! OverviewTableCell
         
+        
+        animateButton(sender: cell.alteraStatusB)
+        
         cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
         cell.endereco.text = dao.denuncias[indexPath.row].address
         cell.status.text = dao.denuncias[indexPath.row].status
@@ -88,6 +91,31 @@ class OverviewTVCon: UITableViewController {
         }
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
     }
+    
+    
+    
+    
+    
+    func animateButton(sender: UIButton) {
+        
+        sender.transform = CGAffineTransform(translationX: 0, y: 250)
+        
+        
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            sender.transform = CGAffineTransform(translationX: 0, y: 0 )
+        }, completion: nil)
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 
     /*
     // Override to support conditional editing of the table view.

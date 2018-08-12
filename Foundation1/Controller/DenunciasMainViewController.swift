@@ -8,6 +8,8 @@
 
 import UIKit
 
+var isFirstLoad = true
+
 class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -123,8 +125,18 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         //tableView.reloadData()
-         animateTable()
         
+        self.tableView.reloadData()
+        
+        if isFirstLoad == true {
+        
+            isFirstLoad = false
+            animateTable()
+        
+            
+        }
+            
+            
     }
     
    
@@ -162,7 +174,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func animateTable() {
-       self.tableView.reloadData()
+       //self.tableView.reloadData()
         
         let cells = tableView.visibleCells
         let tableHeight: CGFloat = tableView.bounds.size.height
