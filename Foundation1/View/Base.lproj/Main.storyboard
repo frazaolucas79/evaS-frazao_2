@@ -9,6 +9,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -145,9 +146,9 @@
                         <color key="backgroundColor" red="0.16078431372549018" green="0.18431372549019609" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LAd-Mb-j3J" firstAttribute="top" secondItem="FdH-gs-NTn" secondAttribute="bottom" constant="8" id="1qy-t9-af3"/>
-                            <constraint firstItem="wb0-sG-dVa" firstAttribute="bottom" secondItem="QwW-nX-CoB" secondAttribute="bottom" constant="20" id="C7U-FS-sdd"/>
                             <constraint firstItem="FdH-gs-NTn" firstAttribute="centerX" secondItem="wb0-sG-dVa" secondAttribute="centerX" id="Gza-GT-Fpc"/>
                             <constraint firstItem="RjJ-LM-a0W" firstAttribute="centerX" secondItem="wb0-sG-dVa" secondAttribute="centerX" id="Qdf-o3-UDW"/>
+                            <constraint firstItem="QwW-nX-CoB" firstAttribute="top" secondItem="RjJ-LM-a0W" secondAttribute="bottom" constant="65" id="XXy-AN-C9s"/>
                             <constraint firstItem="LAd-Mb-j3J" firstAttribute="leading" secondItem="wb0-sG-dVa" secondAttribute="leading" id="Z9u-fH-U2C"/>
                             <constraint firstItem="QwW-nX-CoB" firstAttribute="centerX" secondItem="wb0-sG-dVa" secondAttribute="centerX" constant="0.5" id="Zzu-1D-MJy"/>
                             <constraint firstItem="LAd-Mb-j3J" firstAttribute="width" secondItem="sbR-I1-RQH" secondAttribute="width" id="dEl-Sr-Yym"/>
@@ -451,6 +452,7 @@
                         <outlet property="imageUpload" destination="s2z-KH-KWc" id="P6u-vk-njz"/>
                         <outlet property="labelAddress" destination="30w-jk-rN8" id="hdv-zP-c01"/>
                         <outlet property="mapView" destination="xOl-7A-bgp" id="PjY-fM-Vre"/>
+                        <outlet property="nextPage" destination="Vvh-QH-LZf" id="q6u-kq-hOs"/>
                         <outlet property="obsView" destination="hdY-Al-Zfa" id="e2K-ba-Zye"/>
                         <outlet property="pin" destination="Qa6-8U-ujL" id="ncj-XH-x9V"/>
                         <outlet property="searchIconMap" destination="g5G-vO-m8Y" id="L8V-Su-jev"/>
@@ -592,7 +594,10 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="01K-DO-2Vm" kind="show" id="lUW-pQ-8TY"/>
+                                                        <segue destination="01K-DO-2Vm" kind="show" id="lUW-pQ-8TY">
+                                                            <segue key="commit" inheritsFrom="parent" id="MOl-Vo-Mqx"/>
+                                                            <segue key="preview" inheritsFrom="commit" id="Ibv-2U-ZaL"/>
+                                                        </segue>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21/09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yl-tU-dUI">
@@ -1437,6 +1442,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lUW-pQ-8TY"/>
         <segue reference="rM8-T4-CK1"/>
     </inferredMetricsTieBreakers>
 </document>

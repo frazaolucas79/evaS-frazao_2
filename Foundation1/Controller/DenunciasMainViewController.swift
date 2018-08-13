@@ -207,7 +207,7 @@ extension UITableView {
     
     func setEmptyMessage(_ message: String) {
         
-        /*
+        
         
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0 , width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
@@ -217,16 +217,16 @@ extension UITableView {
         messageLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
         messageLabel.sizeToFit()
       
-        */
-        
+ 
+        /*
        let imageMessage = UIImageView(image: UIImage (named: "newReportTutorial"))
         
         imageMessage.contentMode = .scaleAspectFit
         
         imageMessage.frame = self.frame
+        */
         
-        
-        self.backgroundView = imageMessage
+        self.backgroundView = messageLabel
         self.separatorStyle = .none
     }
     

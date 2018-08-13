@@ -9,10 +9,22 @@ import UIKit
 
 class ResumoTBVContr: UITableViewController {
     
+    let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
+        
+        // Prepare shortly before playing
+        lightImpactFeedbackGenerator.prepare()
+        
+        // Play the haptic signal
+        lightImpactFeedbackGenerator.impactOccurred()
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         

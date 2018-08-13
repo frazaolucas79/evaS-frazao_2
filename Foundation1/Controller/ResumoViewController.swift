@@ -93,6 +93,8 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        animateButton(sender: mainButton)
+        
         mainButton.setTitle("Enviar", for: .normal)
         mainButton.alpha = 1
         mainButton.isUserInteractionEnabled = true
@@ -162,6 +164,25 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         
         let activity = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(activity, animated: true, completion: nil)
+        
+        
+    }
+    
+    func animateButton(sender: UIButton) {
+        
+        sender.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.8),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                        sender.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
+        
         
         
     }

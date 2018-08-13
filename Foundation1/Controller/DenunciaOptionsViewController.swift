@@ -91,10 +91,47 @@ class DenunciaOptionsViewController: UIViewController, UICollectionViewDataSourc
         dao.getNewDenuncia()
         dao.denuncia.tipoDenuncia = nomes[indexPath.row]
         self.navigationController?.pushViewController(tipoDenunciaView, animated: true)
+        
+        let lightImpactFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+            // Prepare shortly before playing
+        lightImpactFeedbackGenerator.prepare()
+            
+            // Play the haptic signal
+        lightImpactFeedbackGenerator.impactOccurred()
+            
+        
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
         self.pageControl.currentPage = indexPath.row
+   
+        cell.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+       // cell.alpha = 0
+       
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.9),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                       cell.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
+        
+        
+        
+        /*
+        UIView.animate(withDuration: 0.5) {
+            cell.alpha = 1
+        }
+        */
+        
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
@@ -115,8 +152,26 @@ class DenunciaOptionsViewController: UIViewController, UICollectionViewDataSourc
         }
     }
     
-   
     
+    
+    func animateButton(sender: UIButton) {
+        
+        sender.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.8),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                        sender.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
+        
+        
+        
+    }
     
     
     

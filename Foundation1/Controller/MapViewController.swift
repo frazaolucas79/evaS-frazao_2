@@ -88,6 +88,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         setupKeyboardDismissRecognizer()
         
+        animateButton(sender: nextPage)
+        
         self.obsView.delegate = self
         obsView.text = "Adicione suas observações. Elas são importantes na resolução da denúncia."
         obsView.textColor = .lightGray
@@ -272,6 +274,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func animateButton(sender: UIButton) {
+        
+        sender.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.8),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                        sender.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
+        
+        
+        
+    }
+    
     
     
     
