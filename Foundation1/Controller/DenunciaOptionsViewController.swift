@@ -16,6 +16,8 @@ class DenunciaOptionsViewController: UIViewController, UICollectionViewDataSourc
     
     var images = ["cancel", "drop", "ink", "question"]
     
+    var desc = ["Caracterizada pelo uso de recursos naturais de forma ilegal ou desregularizada.", "Problema associado a vazamentos de canos em locais públicos", "Problemas no abastecimento de água na sua região, seja ela pública ou privada.", "Qualquer outro problema que envolva recursos naturais, como a água."]
+    
     @IBOutlet weak var pageControl: UIPageControl!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -37,6 +39,7 @@ class DenunciaOptionsViewController: UIViewController, UICollectionViewDataSourc
         
         cell.imgButton.image = UIImage(named: images[indexPath.row])
         
+        cell.desc.text = desc[indexPath.row]
         
         cell.denunciaButton.backgroundColor = UIColor(named: colors[indexPath.row])
         

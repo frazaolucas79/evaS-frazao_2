@@ -90,10 +90,33 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     
     @IBOutlet weak var descReview: UITextView!
     @IBOutlet weak var check: UIImageView!
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Animations
+        
         animateButton(sender: mainButton)
+       
+        check.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.8),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                        self.check.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
+        
+        
+        
+        
+        
+        //---------------------------------
         
         mainButton.setTitle("Enviar", for: .normal)
         mainButton.alpha = 1
@@ -111,10 +134,15 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         locationLabel.text = dao.denuncia.address
         obsLabel.text = dao.denuncia.obsUsuario
         
+        /*
+        
         check.layer.shadowColor = UIColor.black.cgColor
         check.layer.shadowRadius = 1
         check.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         check.layer.shadowOpacity = 0.5
+ 
+        */
+ 
         descReview.layer.cornerRadius = 5
         
         

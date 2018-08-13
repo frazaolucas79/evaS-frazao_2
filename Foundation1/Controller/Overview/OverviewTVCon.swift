@@ -82,12 +82,14 @@ class OverviewTVCon: UITableViewController {
             cell.status.text = "Aberto"
             cell.alteraStatusB.backgroundColor = UIColor(named: "water")
             cell.alteraStatusB.setTitle("Fechar Denúncia", for: .normal)
+            animatePress(sender: cell.alteraStatusB)
         } else {
             cell.alteraStatusQuestion.text = "O problema persiste?"
             dao.denuncias[indexPathRow].status = "Fechado"
             cell.status.text = "Fechado"
             cell.alteraStatusB.backgroundColor = UIColor(named: "redish")
             cell.alteraStatusB.setTitle("Reabrir Denúncia", for: .normal)
+            animatePress(sender: cell.alteraStatusB)
         }
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
     }
@@ -109,7 +111,18 @@ class OverviewTVCon: UITableViewController {
         
     }
     
-    
+    func animatePress(sender: UIButton) {
+        
+        sender.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
+            sender.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+        
+        
+    }
     
     
     
