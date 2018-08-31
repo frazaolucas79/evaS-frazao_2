@@ -460,7 +460,7 @@
         <!--Minhas Denúncias-->
         <scene sceneID="4gG-78-Mx8">
             <objects>
-                <viewController id="t0b-lQ-h3B" customClass="DenunciasMainViewController" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="t0b-lQ-h3B" customClass="DenunciasMainViewController" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="haD-tN-nqi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1063,10 +1063,10 @@
             </objects>
             <point key="canvasLocation" x="3508" y="3024"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--First Nav Controller-->
         <scene sceneID="NQt-ou-Hvi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jqj-0P-Roa" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FirstNavController2" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jqj-0P-Roa" customClass="FirstNavController" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xrW-Hz-GKP">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
