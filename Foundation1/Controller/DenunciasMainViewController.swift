@@ -29,6 +29,8 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
             self.tableView.setEmptyMessage("Você ainda não criou nenhuma denúncia :(")
         } else {
             self.tableView.restore()
+            self.tableView.separatorStyle = .none
+            
         }
         
         return dao.denuncias.count
@@ -38,12 +40,15 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     
 
     @IBAction func closeReport(_ sender: Any) {
+        
         let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to:self.tableView)
         let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
         print(indexPath![1])
-        dao.denuncias[indexPath![1]].status = "Fechado";
+        dao.denuncias[indexPath![1]].status = "Fechado"
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
-        self.view.setNeedsLayout()
+        //self.view.setNeedsDisplay()
+        self.tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +62,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         */
         
         
-        cell.data.text = datas[indexPath.row%datas.count]
+        cell.data.text = dao.denuncias[indexPath.row].date
         cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
        
         print(cell.tipoDenuncia)

@@ -55,7 +55,11 @@ class DAO{
         return denuncias.last!
     }
     func getNewDenuncia()-> Denuncia{
-        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto")
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM"
+        let result = formatter.string(from: date)
+        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto", date: result)
         return denuncia
     }
 }

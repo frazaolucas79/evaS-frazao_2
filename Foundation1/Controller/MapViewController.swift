@@ -11,12 +11,14 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var descView: UIView!
     @IBOutlet weak var pin: UIImageView!
+    @IBOutlet weak var denunciaView: UIView!
+    
+    
     
     @IBOutlet weak var titleDenun: UILabel!
-    @IBOutlet weak var buttonDenun: RoundButton!
     @IBOutlet weak var labelAddress: UILabel!
+
     @IBOutlet weak var obsView: UITextView!
     
     var mainLabel = ""
@@ -37,8 +39,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         pin.layer.shadowOpacity = 0.5
         
         obsView.layer.cornerRadius = 10
-        
-       // labelAddress.text! = dao.denuncia.address
+        denunciaView.layer.cornerRadius = 10
         
         titleDenun.text! = dao.denuncia.tipoDenuncia
         
@@ -46,7 +47,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         print("\(colorDenun)")
         
-        // buttonDenun.backgroundColor = UIColor(named: "\(colorDenun)")
+        print(titleDenun.text)
         
         print(mainLabel)
         
@@ -71,6 +72,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         getLocation()
         
+        if titleDenun.text == "Conexão Ilegal" {
+            
+            denunciaView.backgroundColor = UIColor(named: "water")
+            
+        } else if titleDenun.text == "Vazamento" {
+            
+            denunciaView.backgroundColor = UIColor(named: "green")
+            
+        } else if titleDenun.text == "Falta d'Água" {
+            
+            denunciaView.backgroundColor = UIColor(named: "purple")
+        } else {
+            
+            denunciaView.backgroundColor = UIColor(named: "redish")
+        }
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -93,6 +113,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             let address = reverseGeocodeInfo?.object(forKey: "formattedAddress") as! String
             dao.denuncia.address = address
+            
         })
     }
     func locationManager(manager:CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus){
