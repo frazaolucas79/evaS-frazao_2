@@ -62,7 +62,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         check.layer.shadowOpacity = 0.5
         descReview.layer.cornerRadius = 5
         
-        dao.denuncias.append(dao.denuncia)
+        dao.addOrderedReport(denuncia: dao.denuncia)
         
         
         

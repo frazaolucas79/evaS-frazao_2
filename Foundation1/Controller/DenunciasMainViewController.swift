@@ -62,7 +62,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         */
         
         
-        cell.data.text = dao.denuncias[indexPath.row].date
+        cell.data.text = dao.denuncias[indexPath.row].dateString
         cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
        
         print(cell.tipoDenuncia)
