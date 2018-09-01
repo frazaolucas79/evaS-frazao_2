@@ -35,6 +35,16 @@ class DAO{
         self.denuncias.append(denuncia)
         self.denuncias = orderArrayByDate(denuncias: denuncias)
     }
+    // fecha denuncia e calcula duracao
+    func closeReport(indexPath: IndexPath?) {
+        let userCalendar = Calendar.current
+        
+        dao.denuncias[indexPath![1]].status = "Fechado"
+        dao.denuncias[indexPath![1]].closeDate = Date()
+        dao.denuncias[indexPath![1]].duracaoDenuncia = Int(userCalendar.dateComponents([.day],
+                                                                                   from: dao.denuncias[indexPath![1]].date,
+                                                                                   to: dao.denuncias[indexPath![1]].closeDate!).day!)
+    }
     
     //Salva a Classe Atividades
     func save(denuncias: [Denuncia], in file:String) {
@@ -73,7 +83,7 @@ class DAO{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM"
         let result = formatter.string(from: date)
-        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto", dateString: result, date: date)
+        denuncia = Denuncia(address: "", tipoDenuncia: "", fotoData: nil, nome: "", obsUsuario: "", status: "Em aberto", dateString: result, date: date, closeDate: nil, duracaoDenuncia: 10)
         return denuncia
     }
 }

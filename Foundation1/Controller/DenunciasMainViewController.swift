@@ -42,8 +42,9 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         
         let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to:self.tableView)
         let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
+        let _cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
         print(indexPath![1])
+        dao.closeReport(indexPath: indexPath)
         dao.denuncias[indexPath![1]].status = "Fechado"
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
         //self.view.setNeedsDisplay()
@@ -66,7 +67,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
        
         print(cell.tipoDenuncia)
-        cell.qntDias.text = qntDiasLabel[indexPath.row%qntDiasLabel.count]
+        cell.qntDias.text = String(dao.denuncias[indexPath.row].duracaoDenuncia) + " dias"
         cell.status.text = dao.denuncias[indexPath.row].status
         cell.address.text = dao.denuncias[indexPath.row].address
         
