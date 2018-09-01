@@ -9,8 +9,15 @@
 import UIKit
 import MessageUI
 
-class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate {
+class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var imageIcon: UIImageView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var mainButton: UIButton!
+    @IBOutlet weak var obsLabel: UITextView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var denunciaView: UIView!
+    @IBOutlet weak var tipoDenunciaLabel: UILabel!
     var didFinishAction = false
     
     var mailContent:String {
@@ -50,16 +57,36 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     }
     
     @IBAction func reportMail(_ sender: Any) {
-        sendEmail()
-        didFinishAction = true
         
+        sendEmail()
+        backButton.isUserInteractionEnabled = true
+        backButton.backgroundColor = UIColor(named: "water")
+        backButton.alpha = 1
+        mainButton.alpha = 0
+        mainButton.isUserInteractionEnabled = false
     }
     
     @IBOutlet weak var descReview: UITextView!
     @IBOutlet weak var check: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mainButton.setTitle("Enviar", for: .normal)
+        mainButton.alpha = 1
+        mainButton.isUserInteractionEnabled = true
+        backButton.isUserInteractionEnabled = false
+        backButton.alpha = 0
+        
+        obsLabel.delegate = self
+        obsLabel.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
+        
+        denunciaView.layer.cornerRadius = 10
+        
         descReview.text = dao.denuncia.obsUsuario
+        tipoDenunciaLabel.text = dao.denuncia.tipoDenuncia
+        locationLabel.text = dao.denuncia.address
+        obsLabel.text = dao.denuncia.obsUsuario
+        
         check.layer.shadowColor = UIColor.black.cgColor
         check.layer.shadowRadius = 1
         check.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
@@ -67,6 +94,26 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         descReview.layer.cornerRadius = 5
         
         dao.addOrderedReport(denuncia: dao.denuncia)
+        
+        
+        if tipoDenunciaLabel.text == "Conexão Ilegal" {
+            
+            denunciaView.backgroundColor = UIColor(named: "water")
+             imageIcon.image = UIImage(named: "cancel")
+        } else if tipoDenunciaLabel.text == "Vazamento" {
+            
+            denunciaView.backgroundColor = UIColor(named: "green")
+            imageIcon.image = UIImage(named: "drop")
+        } else if tipoDenunciaLabel.text == "Falta d'Água" {
+            
+            denunciaView.backgroundColor = UIColor(named: "purple")
+            imageIcon.image = UIImage(named: "ink")
+        } else {
+            
+            denunciaView.backgroundColor = UIColor(named: "redish")
+            imageIcon.image = UIImage(named: "question")
+        }
+        
         
         
         
@@ -83,15 +130,10 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        if didFinishAction == true {
-            
-            goToHomePage()
-            
-        }
-        
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+  
+        //self.performSegue(withIdentifier: "segueToMain", sender: self)
         
     }
     
@@ -108,6 +150,10 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         
         
     }
+    
+    
+    
+    
     
     
     

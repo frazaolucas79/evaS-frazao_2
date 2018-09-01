@@ -15,4 +15,20 @@ class DenunciaCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgButton: UIImageView!
     @IBOutlet weak var desc: UITextView!
     
+
+
+override func awakeFromNib() {
+    super.awakeFromNib()
+    
+    denunciaButton.layer.shadowColor = UIColor.black.cgColor
+    denunciaButton.layer.shadowRadius = 5
+    denunciaButton.layer.shadowOffset = CGSize(width: 1.0, height: 5.0)
+    denunciaButton.layer.shadowOpacity = 0.4
+    
+    
+    
+    
+    // Initialization code
+}
+
 }

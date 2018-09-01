@@ -9,17 +9,20 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
+    //Varibles
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pin: UIImageView!
     @IBOutlet weak var denunciaView: UIView!
-    
-    
-    
+    @IBOutlet weak var imageIcon: UIImageView!
+    @IBOutlet weak var searchMap: UIButton!
+    @IBOutlet weak var searchIconMap: UIButton!
     @IBOutlet weak var titleDenun: UILabel!
     @IBOutlet weak var labelAddress: UILabel!
-
     @IBOutlet weak var obsView: UITextView!
+    @IBOutlet weak var cameraOutlet: UIButton!
     
     var mainLabel = ""
     var colorDenun = ""
@@ -31,17 +34,78 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         getLocation()
     }
     
+    @IBAction func camera(_ sender: Any) {
+    
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.allowsEditing = true
+        vc.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        present(vc, animated: true)
+    
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+        dao.denuncia.fotoData = image.data
+        cameraOutlet.setImage(image, for: UIControlState.normal)
+        // print out the image size as a test
+        print(image.size)
+    }
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupKeyboardDismissRecognizer()
+        
+        self.obsView.delegate = self
+        obsView.text = "Adicione suas observações. Elas são importantes na resolução da denúncia."
+        obsView.textColor = .lightGray
+        obsView.textContainerInset = UIEdgeInsetsMake(10, 5, 0, 5)
+        obsView.layer.cornerRadius = 10
+        obsView.layer.shadowColor = UIColor.black.cgColor
+        obsView.layer.shadowRadius = 3
+        obsView.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
+        obsView.layer.shadowOpacity = 0.5
+
+        
+        
+        //Keyboard Functions
+      
+        /*
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        */
+        /*
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        */
+        //-----------------------------------------
+        
+        
         pin.layer.shadowColor = UIColor.black.cgColor
         pin.layer.shadowRadius = 1
         pin.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         pin.layer.shadowOpacity = 0.5
         
-        obsView.layer.cornerRadius = 10
+        
         denunciaView.layer.cornerRadius = 10
         
+        dao.denuncia.obsUsuario = obsView.text
+        
         titleDenun.text! = dao.denuncia.tipoDenuncia
+        //labelAddress.text = dao.denuncia.address
         
         print(type(of: colorDenun))
         
@@ -75,17 +139,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if titleDenun.text == "Conexão Ilegal" {
             
             denunciaView.backgroundColor = UIColor(named: "water")
+            imageIcon.image = UIImage(named: "cancel")
             
         } else if titleDenun.text == "Vazamento" {
             
             denunciaView.backgroundColor = UIColor(named: "green")
+            imageIcon.image = UIImage(named: "drop")
             
         } else if titleDenun.text == "Falta d'Água" {
             
             denunciaView.backgroundColor = UIColor(named: "purple")
+            imageIcon.image = UIImage(named: "ink")
         } else {
             
             denunciaView.backgroundColor = UIColor(named: "redish")
+            imageIcon.image = UIImage(named: "question")
         }
         
         
@@ -116,6 +184,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
         })
     }
+    
+    
     func locationManager(manager:CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         if status != CLAuthorizationStatus.notDetermined || status != CLAuthorizationStatus.denied || status != CLAuthorizationStatus.restricted{
             getLocation()
@@ -123,13 +193,73 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
+    // Keyboard Functions
+
     
+    func setupKeyboardDismissRecognizer(){
+        let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(MapViewController.dismissKeyboard))
+        
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func dismissKeyboard()
+    {
+
+        view.endEditing(true)
+        
+    }
+    
+    
+    
+    //----------------------------------
+    
+    func textViewDidBeginEditing(_ obsView: UITextView) {
+        if obsView.textColor == .lightGray {
+            obsView.text = nil
+            obsView.textColor = .white
+        }
+    }
+    
+    func textViewDidEndEditing(_ obsView: UITextView) {
+        if obsView.text.isEmpty {
+            obsView.text = "Adicione suas observações. Elas são importantes na resolução da denúncia."
+            obsView.textColor = .lightGray
+        } else {
+            dao.denuncia.obsUsuario = obsView.text
+        }
+    }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
+    /*
+     @objc func keyboardWillShow(sender: NSNotification) {
+     self.view.frame.origin.y -= 235
+     searchMap.isUserInteractionEnabled = false
+     searchIconMap.isUserInteractionEnabled = false
+     }
+     
+     @objc func keyboardWillHide(sender: NSNotification) {
+     self.view.frame.origin.y += 235
+     searchMap.isUserInteractionEnabled = true
+     searchIconMap.isUserInteractionEnabled = true
+     
+     }
+     */
+    /*
+     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+     obsView.resignFirstResponder()
+     }
+     */
+    
     
     
     /*
