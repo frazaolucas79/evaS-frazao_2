@@ -13,7 +13,7 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     var rowConfirm: Int = 0
     
-    var datas = ["18/06", "21/05","12/05", "12/05","12/05","12/05"]
+    //var datas = ["18/06", "21/05","12/05", "12/05","12/05","12/05"]
     
     
     var qntDiasLabel = ["12 dias", "20 dias", "30 dias","30 dias","30 dias","30 dias"]
