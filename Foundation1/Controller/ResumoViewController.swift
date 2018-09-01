@@ -28,6 +28,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         <p><b>Observações do Usuario:</b> \(dao.denuncia.obsUsuario)</p>
         """
     }
+    
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
             var subject:String
@@ -143,13 +144,6 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         let tipoDenunciaView: FirstNavController = self.storyboard?.instantiateViewController(withIdentifier: "FirstNavController2") as! FirstNavController
         
         self.navigationController?.present(tipoDenunciaView, animated: true, completion: nil)
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-  
-        //self.performSegue(withIdentifier: "segueToMain", sender: self)
         
     }
     

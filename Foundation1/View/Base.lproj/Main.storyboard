@@ -172,15 +172,6 @@
         <!--Pesquisar-->
         <scene sceneID="6CN-7u-FMf">
             <objects>
-                <searchDisplayController id="0or-52-nS4">
-                    <connections>
-                        <outlet property="delegate" destination="sLR-vb-FiC" id="apu-a2-Som"/>
-                        <outlet property="searchContentsController" destination="sLR-vb-FiC" id="WH9-vd-ZwX"/>
-                        <outlet property="searchResultsDataSource" destination="sLR-vb-FiC" id="a38-b7-qc6"/>
-                        <outlet property="searchResultsDelegate" destination="sLR-vb-FiC" id="Nb8-df-Kjn"/>
-                    </connections>
-                </searchDisplayController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mH9-XB-A9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="Pesquisar" id="sLR-vb-FiC" customClass="PesquisarViewController" customModule="Foundation1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ypr-Ub-dNI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -204,6 +195,15 @@
                         <outlet property="searchDisplayController" destination="0or-52-nS4" id="oBa-bv-FIh"/>
                     </connections>
                 </viewController>
+                <searchDisplayController id="0or-52-nS4">
+                    <connections>
+                        <outlet property="delegate" destination="sLR-vb-FiC" id="apu-a2-Som"/>
+                        <outlet property="searchContentsController" destination="sLR-vb-FiC" id="WH9-vd-ZwX"/>
+                        <outlet property="searchResultsDataSource" destination="sLR-vb-FiC" id="a38-b7-qc6"/>
+                        <outlet property="searchResultsDelegate" destination="sLR-vb-FiC" id="Nb8-df-Kjn"/>
+                    </connections>
+                </searchDisplayController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mH9-XB-A9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3388" y="2242.6108374384239"/>
         </scene>
@@ -1227,7 +1227,6 @@
                         <outlet property="check" destination="Z1v-3Y-z4C" id="vht-0Y-wcY"/>
                         <outlet property="denunciaView" destination="o4R-hf-Wzh" id="dEO-0E-9dn"/>
                         <outlet property="descReview" destination="L7c-is-GA7" id="8sX-Eh-Au1"/>
-                        <outlet property="labelText" destination="DYC-ad-cJK" id="oKt-Nk-iZr"/>
                         <outlet property="imageIcon" destination="mnm-p7-Hfu" id="9gh-ko-7SQ"/>
                         <outlet property="locationLabel" destination="DYC-ad-cJK" id="gvF-SA-hG3"/>
                         <outlet property="mainButton" destination="eHk-YG-7FC" id="fyJ-6o-wck"/>
@@ -1280,9 +1279,6 @@
         </namedColor>
         <namedColor name="purple">
             <color red="0.36500000953674316" green="0.3059999942779541" blue="0.42699998617172241" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="water">
-            <color red="0.30588235294117649" green="0.80392156862745101" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="water">
             <color red="0.30588235294117649" green="0.80392156862745101" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
