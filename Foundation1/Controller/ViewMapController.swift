@@ -7,15 +7,14 @@
 //
 import UIKit
 import MapKit
-protocol HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark)
-}
-class PesquisarViewController : UIViewController {
+
+class ViewMapController : UIViewController {
     var selectedPin:MKPlacemark? = nil
     var resultSearchController:UISearchController? = nil
     
-    let locationManager = CLLocationManager()    
+    let locationManager = CLLocationManager()
     @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,12 +33,12 @@ class PesquisarViewController : UIViewController {
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         locationSearchTable.mapView = mapView
-        locationSearchTable.handleMapSearchDelegate = self
+        //locationSearchTable.handleMapSearchDelegate = self
     }
     
 }
 
-extension PesquisarViewController : CLLocationManagerDelegate {
+extension ViewMapController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error.localizedDescription)")
@@ -62,27 +61,5 @@ extension PesquisarViewController : CLLocationManagerDelegate {
     }
     
 }
-extension PesquisarViewController: HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark){
-        // cache the pin
-        selectedPin = placemark
-        // clear existing pins
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        
-        
-        dao.denuncia.address = placemark.title!
-        
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = "\(city) \(state)"
-        }
-        mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.03, 0.03)
-        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-        mapView.setRegion(region, animated: true)
-    }
-}
+
 
