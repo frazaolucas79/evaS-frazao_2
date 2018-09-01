@@ -23,19 +23,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var labelAddress: UILabel!
     @IBOutlet weak var obsView: UITextView!
     @IBOutlet weak var cameraOutlet: UIButton!
+    @IBOutlet weak var imageUpload: UIImageView!
+    
+    @IBOutlet weak var topConstNext: NSLayoutConstraint!
     
     var mainLabel = ""
     var colorDenun = ""
-    
+    var hasButtonMoved = false
     var coreLocationManager = CLLocationManager()
     var locationManager:LocationManager!
     
     @IBAction func updateLocation(_ sender: Any) {
-        getLocation()
+       
     }
     
     @IBAction func camera(_ sender: Any) {
-    
         let vc = UIImagePickerController()
         vc.sourceType = .camera
         vc.allowsEditing = true
@@ -46,13 +48,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true)
-        
         guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
             print("No image found")
             return
         }
         dao.denuncia.fotoData = image.data
-        cameraOutlet.setImage(image, for: UIControlState.normal)
+        imageUpload.image = image
+        if (!hasButtonMoved) {
+            topConstNext.constant += 92
+            hasButtonMoved = true
+        }
         // print out the image size as a test
         print(image.size)
     }
@@ -77,6 +82,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         obsView.layer.shadowOffset = CGSize(width: 1.0, height: 2.0)
         obsView.layer.shadowOpacity = 0.5
 
+       // getLocation()
         
         
         //Keyboard Functions
@@ -105,7 +111,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         dao.denuncia.obsUsuario = obsView.text
         
         titleDenun.text! = dao.denuncia.tipoDenuncia
-        //labelAddress.text = dao.denuncia.address
+        
+        labelAddress.text = "Buscando localização..."
         
         print(type(of: colorDenun))
         
@@ -134,7 +141,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             coreLocationManager.desiredAccuracy = kCLLocationAccuracyBest
             coreLocationManager.startUpdatingLocation()
         }
+        
+        print(dao.denuncia.address)
+        
         getLocation()
+        
+        print(dao.denuncia.address)
+        
         
         if titleDenun.text == "Conexão Ilegal" {
             
@@ -181,7 +194,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             let address = reverseGeocodeInfo?.object(forKey: "formattedAddress") as! String
             dao.denuncia.address = address
-            
+            self.labelAddress.text = dao.denuncia.address
         })
     }
     
