@@ -40,7 +40,7 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
                 subject = dao.denuncia.tipoDenuncia
             }
             let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate
+            mail.mailComposeDelegate = self as MFMailComposeViewControllerDelegate
             mail.setToRecipients(["bruno.leaoteixeira@gmail.com"])
             mail.setSubject("Denuncia -  \(subject)")
             mail.setMessageBody(mailContent, isHTML: true)
@@ -53,6 +53,21 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case MFMailComposeResult.cancelled:
+            print("Mail cancelled")
+            break
+        case MFMailComposeResult.saved:
+            print("Mail saved")
+            break
+        case MFMailComposeResult.sent:
+            print("Mail sent")
+            break
+        case MFMailComposeResult.failed:
+            print("Mail sent failure: \(String(describing: error?.localizedDescription))")
+            break
+        }
+        
         controller.dismiss(animated: true)
     }
     
