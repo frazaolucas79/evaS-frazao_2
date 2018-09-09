@@ -46,15 +46,14 @@ class OverviewTVCon: UITableViewController {
         self.indexPathRow = indexPath.row
         cell = tableView.dequeueReusableCell(withIdentifier: "Overview", for: indexPath) as! OverviewTableCell
         
-        
         animateButton(sender: cell.alteraStatusB)
         
-        cell.tipoDenuncia.text = dao.denuncias[indexPath.row].tipoDenuncia
-        cell.endereco.text = dao.denuncias[indexPath.row].address
-        cell.status.text = dao.denuncias[indexPath.row].status
-        cell.data.text = dao.denuncias[indexPath.row].dateString
-        cell.obsUsuario.text = dao.denuncias[indexPath.row].obsUsuario
-        let days = DateUtils.durationDate(date: dao.denuncias[indexPath.row].date, closeDate: dao.denuncias[indexPath.row].closeDate)
+        cell.tipoDenuncia.text = dao.denuncia.tipoDenuncia //dao.denuncias[indexPath.row].tipoDenuncia
+        cell.endereco.text = dao.denuncia.address //dao.denuncias[indexPath.row].address
+        cell.status.text = dao.denuncia.status //dao.denuncias[indexPath.row].status
+        cell.data.text = dao.denuncia.dateString //dao.denuncias[indexPath.row].dateString
+        cell.obsUsuario.text = dao.denuncia.obsUsuario //dao.denuncias[indexPath.row].obsUsuario
+        let days = DateUtils.durationDate(date: dao.denuncia.date, closeDate: dao.denuncia.closeDate)
         cell.duracaoDenuncia.text = days == 1 ? String(days) + " dia" : String(days) + " dias"
         verifyStatusAndSetButton()
         
@@ -78,14 +77,14 @@ class OverviewTVCon: UITableViewController {
     @IBAction func alteraStatusButton(_ sender: UIButton) {
         if (cell.status.text == "Fechado") {
             cell.alteraStatusQuestion.text = "O problema foi resolvido?"
-            dao.denuncias[indexPathRow].status = "Aberto"
+            dao.denuncias[dao.currentIndex].status = "Aberto"
             cell.status.text = "Aberto"
             cell.alteraStatusB.backgroundColor = UIColor(named: "water")
             cell.alteraStatusB.setTitle("Fechar Denúncia", for: .normal)
             animatePress(sender: cell.alteraStatusB)
         } else {
             cell.alteraStatusQuestion.text = "O problema persiste?"
-            dao.denuncias[indexPathRow].status = "Fechado"
+            dao.denuncias[dao.currentIndex].status = "Fechado"
             cell.status.text = "Fechado"
             cell.alteraStatusB.backgroundColor = UIColor(named: "redish")
             cell.alteraStatusB.setTitle("Reabrir Denúncia", for: .normal)

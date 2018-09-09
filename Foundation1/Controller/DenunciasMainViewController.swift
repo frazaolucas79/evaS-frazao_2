@@ -38,17 +38,17 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
  
 
     @IBAction func closeReport(_ sender: Any) {
-        
+
         let buttonPosition:CGPoint = (sender as AnyObject).convert(CGPoint.zero, to:self.tableView)
         let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! DenunciaCreatedTableViewCell
         dao.closeReport(indexPath: indexPath)
         dao.save(denuncias: dao.denuncias, in: "Denuncias")
         cell.status.textColor = UIColor(named: "redish")
-        
+
         self.tableView.reloadData()
     }
-    
+
    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,6 +65,8 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
         cell.qntDias.text = days == 1 ? String(days) + " dia" : String(days) + " dias"
         cell.status.text = dao.denuncias[indexPath.row].status
         cell.address.text = dao.denuncias[indexPath.row].address
+        
+        cell.buttonView.isUserInteractionEnabled = false
         
         if dao.denuncias[indexPath.row].status == "Fechado" {
         
@@ -89,30 +91,31 @@ class DenunciasMainViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    private func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath)->Int {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       // let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
-        
-      //  let tipoDenunciaView: DenunciaOverViewVC = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! DenunciaOverViewVC
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) as! DenunciaCreatedTableViewCell
+        let tipoDenunciaView: OverviewTVCon = self.storyboard?.instantiateViewController(withIdentifier: "Overview") as! OverviewTVCon
         
         //let collectionView: OverviewDenunciaCell = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! OverviewDenunciaCell
         
-       // collectionView.tipoDenúncia.text = dao.denuncias[indexPath.row].tipoDenuncia
-
-        dao.getNewDenuncia()
+        // collectionView.tipoDenúncia.text = dao.denuncias[indexPath.row].tipoDenuncia
+        
+        dao.currentIndex = indexPath.row
+        dao.denuncia = dao.denuncias[indexPath.row]
+        //dao.getNewDenuncia()
    
-        //self.navigationController?.pushViewController(tipoDenunciaView, animated: true)
-        return indexPath.row
+        self.navigationController?.pushViewController(tipoDenunciaView, animated: true)
+        //return indexPath.row
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
        // tableView.alwaysBounceVertical = true
         
         tableView.isScrollEnabled = true
         dao.denuncias = dao.getDenuncias(from: "Denuncias")
-        
         
         // Do any additional setup after loading the view.
     }

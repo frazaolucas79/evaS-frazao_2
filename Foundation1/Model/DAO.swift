@@ -14,6 +14,7 @@ class DAO{
     static let instance = DAO()
     var denuncias:[Denuncia] = []
     var denuncia: Denuncia!
+    var currentIndex: Int = 0;
     
     // Diretório Documentos padrão do Sistema
     static let documentDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString

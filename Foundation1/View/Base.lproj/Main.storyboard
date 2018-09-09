@@ -9,7 +9,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -566,7 +565,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="288" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AsA-YQ-GvA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="288" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AsA-YQ-GvA">
                                 <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <color key="backgroundColor" red="0.22078093469999999" green="0.25244719700000001" blue="0.29090430699999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -593,12 +592,6 @@
                                                             <real key="value" value="15"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <segue destination="01K-DO-2Vm" kind="show" id="lUW-pQ-8TY">
-                                                            <segue key="commit" inheritsFrom="parent" id="MOl-Vo-Mqx"/>
-                                                            <segue key="preview" inheritsFrom="commit" id="Ibv-2U-ZaL"/>
-                                                        </segue>
-                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21/09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yl-tU-dUI">
                                                     <rect key="frame" x="34" y="40" width="73" height="21"/>
@@ -654,7 +647,7 @@
                                                         <color key="titleColor" name="water"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="closeReport:" destination="t0b-lQ-h3B" eventType="touchUpInside" id="O7l-ws-K7K"/>
+                                                        <action selector="closeReport:" destination="t0b-lQ-h3B" eventType="touchUpInside" id="TbT-yR-pZX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1442,7 +1435,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lUW-pQ-8TY"/>
         <segue reference="rM8-T4-CK1"/>
     </inferredMetricsTieBreakers>
 </document>

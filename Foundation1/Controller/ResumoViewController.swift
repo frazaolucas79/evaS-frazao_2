@@ -50,6 +50,8 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         } else {
             // show failure alert
         }
+        dao.addOrderedReport(denuncia: dao.denuncia)
+        self.performSegue(withIdentifier: "resumotb", sender: self)
         
       //  dao.addOrderedReport(denuncia: dao.denuncia)
     }
@@ -65,13 +67,15 @@ class ResumoViewController: UIViewController,MFMailComposeViewControllerDelegate
         case MFMailComposeResult.sent:
             print("Mail sent")
             isFirstLoad = true
-            dao.addOrderedReport(denuncia: dao.denuncia)
-            self.performSegue(withIdentifier: "resumotb", sender: self)
+//            dao.addOrderedReport(denuncia: dao.denuncia)
+//            self.performSegue(withIdentifier: "resumotb", sender: self)
             break
         case MFMailComposeResult.failed:
             print("Mail sent failure: \(String(describing: error?.localizedDescription))")
             break
         }
+//        dao.addOrderedReport(denuncia: dao.denuncia)
+//        self.performSegue(withIdentifier: "resumotb", sender: self)
         
         controller.dismiss(animated: true)
     }
